@@ -52,20 +52,32 @@ if ( ! function_exists( 'wp_body_open' ) ) {
                 <div class="animation-preloader">
                     <div class="icon"><img src="<?php echo esc_url(get_template_directory_uri());?>/assets/images/logo/logo_01.svg" alt="" class="m-auto d-block" width="38"></div>
                     <div class="txt-loading mt-2">
-                        <span data-text-preloader="S" class="letters-loading">
-                            S
+                        <span data-text-preloader="D" class="letters-loading">
+                            D
                         </span>
-                        <span data-text-preloader="I" class="letters-loading">
-                            I
+                        <span data-text-preloader="A" class="letters-loading">
+                            A
                         </span>
-                        <span data-text-preloader="N" class="letters-loading">
-                            N
+                        <span data-text-preloader="T" class="letters-loading">
+                            T
+                        </span>
+                        <span data-text-preloader="A" class="letters-loading">
+                            A
                         </span>
                         <span data-text-preloader="C" class="letters-loading">
                             C
                         </span>
-                        <span data-text-preloader="O" class="letters-loading">
-                            O
+                        <span data-text-preloader="R" class="letters-loading">
+                            R
+                        </span>
+                        <span data-text-preloader="A" class="letters-loading">
+                            A
+                        </span>
+                        <span data-text-preloader="F" class="letters-loading">
+                            F
+                        </span>
+                        <span data-text-preloader="T" class="letters-loading">
+                            T
                         </span>
                     </div>
                 </div>	

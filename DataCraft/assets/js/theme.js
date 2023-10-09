@@ -1,7 +1,7 @@
 // js Document
 
     // Created on   : 27/01/2022.
-    // Theme Name   : Sinco - Data Science & Analytics HTML5 Template
+    // Theme Name   : DataCraft Intelligence Template
     // Version      : 1.0.
     // Developed by : (me@heloshape.com) / (www.me.heloshape.com)
 
