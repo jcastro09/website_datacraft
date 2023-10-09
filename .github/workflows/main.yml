@@ -17,6 +17,7 @@ jobs:
           server: ${{ secrets.ftp_host }}
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
+          port: ${{ secrets.ftp_port }}
           server-dir: public_html/wp-content/themes/DataCraft
 
           
