@@ -104,9 +104,9 @@ class StreamHandler extends AbstractProcessingHandler
      */
     protected function streamWrite($stream, array $record)
     {
-        $content = sinco_filesystem()->get_contents($stream);
+        $content = DataCraft_filesystem()->get_contents($stream);
         $content .= "\n".$record['formatted'];
-        sinco_filesystem()->put_contents($stream, (string) $content);
+        DataCraft_filesystem()->put_contents($stream, (string) $content);
     }
 
     private function customErrorHandler($code, $msg)

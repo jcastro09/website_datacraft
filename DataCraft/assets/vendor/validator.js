@@ -266,7 +266,7 @@
     return !!this.$inputs.filter(fieldErrors).length
   }
 
-  Validator.prototype.isIncomplete = function () {
+  Validator.prototype.iDataCraftmplete = function () {
     function fieldIncomplete() {
       var value = getValue($(this))
       return !(typeof value == "string" ? $.trim(value) : value)
@@ -277,12 +277,12 @@
 
   Validator.prototype.onSubmit = function (e) {
     this.validate()
-    if (this.isIncomplete() || this.hasErrors()) e.preventDefault()
+    if (this.iDataCraftmplete() || this.hasErrors()) e.preventDefault()
   }
 
   Validator.prototype.toggleSubmit = function () {
     if (!this.options.disable) return
-    this.$btn.toggleClass('disabled', this.isIncomplete() || this.hasErrors())
+    this.$btn.toggleClass('disabled', this.iDataCraftmplete() || this.hasErrors())
   }
 
   Validator.prototype.defer = function ($el, callback) {

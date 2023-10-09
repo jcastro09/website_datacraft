@@ -1,5 +1,5 @@
 <?php
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 /**
  * Common functions
  */
@@ -64,20 +64,20 @@ class Common {
 	 */
 	function blog( $template = 'blog' ) {
 		global $wp_query;
-		$options = sinco_WSH()->option();
+		$options = DataCraft_WSH()->option();
 		if ( ( $wp_query->is_posts_page && 'blog' == $template ) || $template == 'page' ) {
 			$page_id = ( $wp_query->is_posts_page ) ? $wp_query->queried_object->ID : get_the_ID();
             
 			$return = [
-				'layout'            => sinco_meta( 'sidebar_sidebar_layout', $page_id, 'right' ),
-				'sidebar_type'      => sinco_meta( 'sidebar_source_type', $page_id, 'd' ),
-				'sidebar_elementor' => sinco_meta( 'sidebar_elementor_template', $page_id ),
-				'sidebar'           => sinco_meta( 'sidebar_page_sidebar', $page_id, 'default-sidebar' ),
-				'banner_type'       => sinco_meta( 'banner_source_type', $page_id ),
-				'banner_elementor'  => sinco_meta( 'banner_elementor_template', $page_id ),
-				'banner'            => sinco_set( sinco_meta( 'banner_page_background', $page_id ), 'url' ),
-				'title'             => sinco_meta( 'banner_banner_title', $page_id ),
-				'enable_banner'     => sinco_meta( 'banner_page_banner', $page_id ),
+				'layout'            => DataCraft_meta( 'sidebar_sidebar_layout', $page_id, 'right' ),
+				'sidebar_type'      => DataCraft_meta( 'sidebar_source_type', $page_id, 'd' ),
+				'sidebar_elementor' => DataCraft_meta( 'sidebar_elementor_template', $page_id ),
+				'sidebar'           => DataCraft_meta( 'sidebar_page_sidebar', $page_id, 'default-sidebar' ),
+				'banner_type'       => DataCraft_meta( 'banner_source_type', $page_id ),
+				'banner_elementor'  => DataCraft_meta( 'banner_elementor_template', $page_id ),
+				'banner'            => DataCraft_set( DataCraft_meta( 'banner_page_background', $page_id ), 'url' ),
+				'title'             => DataCraft_meta( 'banner_banner_title', $page_id ),
+				'enable_banner'     => DataCraft_meta( 'banner_page_banner', $page_id ),
 			];
 		} else {
 			$enable_banner = $template . '_page_banner';
@@ -89,8 +89,8 @@ class Common {
             
 			$return = [
 				'enable_banner' => $options->get( $enable_banner ),
-				'title'         => $options->get( $title ) ? $options->get( $title ) : sinco_the_title( $template ),
-				'banner'        => sinco_set( $bg, 'url' ),
+				'title'         => $options->get( $title ) ? $options->get( $title ) : DataCraft_the_title( $template ),
+				'banner'        => DataCraft_set( $bg, 'url' ),
 				'sidebar'       => $options->get( $sidebar, 'default-sidebar' ),
 				'layout'        => $options->get( $layout, 'right' ),
 			];
@@ -111,25 +111,25 @@ class Common {
 	 */
 	public function single( $template = 'single' ) {
 		global $wp_query;
-		$options = sinco_WSH()->option();
+		$options = DataCraft_WSH()->option();
 		$page_id = ( $wp_query->is_posts_page ) ? $wp_query->queried_object->ID : get_the_ID();
 		
 		
-		$title = sinco_meta( 'banner_banner_title', $page_id );
-		$banner_type = sinco_meta( 'page_banner_style', $page_id );
+		$title = DataCraft_meta( 'banner_banner_title', $page_id );
+		$banner_type = DataCraft_meta( 'page_banner_style', $page_id );
 		$return = [
 			'tpl-type'          => $options->get( $template . '_source_type', 'd' ),
 			'tpl-elementor'     => $options->get( $template . '_elementor_template' ),
-			'layout'            => sinco_meta( 'sidebar_sidebar_layout', $page_id, 'right' ),
-			'sidebar_type'      => sinco_meta( 'sidebar_source_type', $page_id, 'd' ),
-			'sidebar_elementor' => sinco_meta( 'sidebar_elementor_template', $page_id ),
-			'sidebar'           => sinco_meta( 'sidebar_page_sidebar', $page_id, 'default-sidebar' ),
-			'banner_type'       => sinco_meta( 'banner_source_type', $page_id ),
-			'banner_elementor'  => sinco_meta( 'banner_elementor_template', $page_id ),
-			'banner'            => sinco_set( sinco_meta( 'banner_page_background', $page_id ), 'url' ),
+			'layout'            => DataCraft_meta( 'sidebar_sidebar_layout', $page_id, 'right' ),
+			'sidebar_type'      => DataCraft_meta( 'sidebar_source_type', $page_id, 'd' ),
+			'sidebar_elementor' => DataCraft_meta( 'sidebar_elementor_template', $page_id ),
+			'sidebar'           => DataCraft_meta( 'sidebar_page_sidebar', $page_id, 'default-sidebar' ),
+			'banner_type'       => DataCraft_meta( 'banner_source_type', $page_id ),
+			'banner_elementor'  => DataCraft_meta( 'banner_elementor_template', $page_id ),
+			'banner'            => DataCraft_set( DataCraft_meta( 'banner_page_background', $page_id ), 'url' ),
 			'title'             => ($title),
 			'banner_type'       => ($banner_type) ? $banner_type : 'banner_v1',
-			'enable_banner'     => sinco_meta( 'banner_page_banner', $page_id ),
+			'enable_banner'     => DataCraft_meta( 'banner_page_banner', $page_id ),
 			'date'              => $options->get( 'single_post_date', 1 ),
 			'author'            => $options->get( 'single_post_author', 1 ),
 			'comments'          => $options->get( 'single_post_comments', 1 ),

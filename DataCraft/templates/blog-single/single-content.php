@@ -12,12 +12,12 @@
 
 $page_id = ( $wp_query->is_posts_page ) ? $wp_query->queried_object->ID : get_the_ID();
 
-$gallery = get_post_meta( $page_id, 'sinco_gallery_images', true );
+$gallery = get_post_meta( $page_id, 'DataCraft_gallery_images', true );
 
-$video = get_post_meta( $page_id, 'sinco_video_url', true );
+$video = get_post_meta( $page_id, 'DataCraft_video_url', true );
 
 
-$audio_type = get_post_meta( $page_id, 'sinco_audio_type', true );
+$audio_type = get_post_meta( $page_id, 'DataCraft_audio_type', true );
 
 ?>
 
@@ -25,7 +25,7 @@ $audio_type = get_post_meta( $page_id, 'sinco_audio_type', true );
 <div class="blog-detail-page">
     <?php if ( has_post_thumbnail() ) : ?>
     	<figure>
-    		<?php sinco_template_load( 'templates/blog-single/image.php', compact( 'options', 'data' ) ); ?>
+    		<?php DataCraft_template_load( 'templates/blog-single/image.php', compact( 'options', 'data' ) ); ?>
     	</figure>
     <?php endif; ?>
 	<div class="blog-detail-meta">
@@ -49,7 +49,7 @@ $audio_type = get_post_meta( $page_id, 'sinco_audio_type', true );
 			<?php endif; ?>
 			<?php if ( $options->get( 'single_post_author', true ) ) : ?>
 
-				<span><i class="fas fa-user"></i><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php esc_html_e( 'By ', 'sinco' );
+				<span><i class="fas fa-user"></i><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php esc_html_e( 'By ', 'DataCraft' );
 						the_author_meta( 'display_name' ); ?></a></span>
 
 			<?php endif; ?>
@@ -68,7 +68,7 @@ $audio_type = get_post_meta( $page_id, 'sinco_audio_type', true );
 		<div class="detail-btm-meta">
 
 			<?php if ( $options->get( 'single_post_tag' ) ) : ?>
-				<?php $title = '<span>' . esc_html__( 'Tags:', 'sinco' ) . '</span>'; ?>
+				<?php $title = '<span>' . esc_html__( 'Tags:', 'DataCraft' ) . '</span>'; ?>
 				<?php the_tags( '<div class="tags">' . $title . ' ', '  ', '</div>' ); ?>
 
 			<?php endif; ?>
@@ -80,7 +80,7 @@ $audio_type = get_post_meta( $page_id, 'sinco_audio_type', true );
 						if ( $v == '' ) {
 							continue;
 						} ?>
-						<?php do_action('sinco_social_share_output', $k ); ?>
+						<?php do_action('DataCraft_social_share_output', $k ); ?>
 					<?php } ?>
 				</ul>
 			<?php endif; ?>
@@ -88,7 +88,7 @@ $audio_type = get_post_meta( $page_id, 'sinco_audio_type', true );
 	<?php endif; ?>
 	<?php if ( $options->get( 'single_post_author_box' ) ) : ?>
 
-		<?php sinco_template_load( 'templates/blog-single/author_box.php', compact( 'options', 'data' ) ); ?>
+		<?php DataCraft_template_load( 'templates/blog-single/author_box.php', compact( 'options', 'data' ) ); ?>
 	<?php endif; ?>
 	<?php comments_template(); ?>
 	<?php wp_link_pages( array( 'before' => '<div class="paginate-links">', 'after' => '</div>' ) ); ?>

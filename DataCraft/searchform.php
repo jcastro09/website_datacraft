@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="sidebar-search">
     <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <input type="text" name="s"  value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr__( 'Search..', 'sinco' ); ?>">
+        <input type="text" name="s"  value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr__( 'Search..', 'DataCraft' ); ?>">
         <button class="tran3s"><i class="bi bi-search"></i></button>
     </form>
 </div>

@@ -7,9 +7,9 @@
  * @version 1.0
  */
 
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 $back    = $options->get( 'footer_background' );
-$back    = sinco_set( $back, 'url', SINCO_URI . 'assets/images/parallax.png' );
+$back    = DataCraft_set( $back, 'url', DataCraft_URI . 'assets/images/parallax.png' );
 $s_type = '';
 $e_tpl = '';
 
@@ -26,7 +26,7 @@ if ( class_exists( '\Elementor\Plugin' ) AND $s_type == 'e' AND $e_tpl ) {
 	echo Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $e_tpl );
 } else {
 
-	do_action( 'sinco_main_footer' ); 
+	do_action( 'DataCraft_main_footer' ); 
 }
 
 

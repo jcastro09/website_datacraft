@@ -2,8 +2,8 @@
 
 <div class="blog-detail-page project-deta">
 <figure>
-	<?php if ( class_exists( 'WPsinco_Resizer' ) ) : ?>
-		<?php echo wp_kses( $img_obj->WPsinco_resize( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ), 'full' ), 1100, 600, true ), $allowed_html ); ?>
+	<?php if ( class_exists( 'WPDataCraft_Resizer' ) ) : ?>
+		<?php echo wp_kses( $img_obj->WPDataCraft_resize( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ), 'full' ), 1100, 600, true ), $allowed_html ); ?>
 	<?php else : ?>
 		<?php the_post_thumbnail( 'full' ); ?>
 	<?php endif; ?>  
@@ -14,11 +14,11 @@
 		<h2><?php the_title(); ?></h2>
 		<?php if ( $options->get( 'projects_single_categories' ) ) : ?>
 			<div class="pro-cat">
-				<span class="pro-title"><?php esc_html_e('Posted In:', 'sinco' ); ?></span>
+				<span class="pro-title"><?php esc_html_e('Posted In:', 'DataCraft' ); ?></span>
 				<span>
 				<?php $lists = get_the_terms( get_the_ID(), 'project_cat' ); ?>
 					<?php foreach( $lists as $list ) { 
-						echo wp_kses(sinco_set( $list,'name' ), true).', ';
+						echo wp_kses(DataCraft_set( $list,'name' ), true).', ';
 					}
 					?>
 						
@@ -37,16 +37,16 @@
 				<?php foreach ( (array) $entries as $key => $entry ) { ?>
 				<li> 
 
-					<?php echo ( sinco_set( $entry, 'opening_day') ) ? '<span>'.sinco_set( $entry, 'opening_day') .':</span>' : ''; ?>
+					<?php echo ( DataCraft_set( $entry, 'opening_day') ) ? '<span>'.DataCraft_set( $entry, 'opening_day') .':</span>' : ''; ?>
 
-					<?php echo ( sinco_set( $entry, 'opening_time') ) ? '<p>'.sinco_set( $entry, 'opening_time') .'</p>' : ''; ?>
+					<?php echo ( DataCraft_set( $entry, 'opening_time') ) ? '<p>'.DataCraft_set( $entry, 'opening_time') .'</p>' : ''; ?>
 				</li>
 
 				<?php } ?>
 				<?php if (  $closed = get_post_meta( get_the_ID(), 'project_closed_day', true ) ) : ?>
 					<li>
 						<span><?php echo wp_kses( $closed, $allowed_html ); ?> :</span>
-						<i><?php esc_html_e( 'closed', 'sinco' ); ?></i>
+						<i><?php esc_html_e( 'closed', 'DataCraft' ); ?></i>
 					</li>
 				<?php endif; ?>
 			</ul>
@@ -57,7 +57,7 @@
 
 		<?php if ( $options->get( 'projectsingle_post_share' ) && $options->get( 'projectsingle_social_share' ) ) : ?>
 			<div class="sharing">
-				<span><?php esc_html_e( 'Social Sharing:', 'sinco' ); ?></span>
+				<span><?php esc_html_e( 'Social Sharing:', 'DataCraft' ); ?></span>
 				<ul class="share-social">
 					<?php if ( ! empty( $options->get( 'projectsingle_social_share' ) ) ) : ?>
 						
@@ -66,7 +66,7 @@
 							if ($v == '')
 								continue;
 							?>
-							<?php do_action('sinco_social_share_output', $k); ?>
+							<?php do_action('DataCraft_social_share_output', $k); ?>
 							<?php } ?>
 							
 						<?php endif; ?>

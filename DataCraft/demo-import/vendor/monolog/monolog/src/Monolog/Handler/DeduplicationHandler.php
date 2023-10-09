@@ -145,6 +145,6 @@ class DeduplicationHandler extends BufferHandler
 
     private function appendRecord(array $record)
     {
-        sinco_filesystem()->put_contents($this->deduplicationStore, $record['datetime']->getTimestamp() . ':' . $record['level_name'] . ':' . preg_replace('{[\r\n].*}', '', $record['message']) . "\n", FILE_APPEND);
+        DataCraft_filesystem()->put_contents($this->deduplicationStore, $record['datetime']->getTimestamp() . ':' . $record['level_name'] . ':' . preg_replace('{[\r\n].*}', '', $record['message']) . "\n", FILE_APPEND);
     }
 }

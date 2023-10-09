@@ -1,6 +1,6 @@
 <?php
 
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
 
 /**
@@ -36,13 +36,13 @@ class Header_Enqueue {
 	 * @return array Returns the array of scripts to load
 	 */
 	public static function scripts() {
-		$options = get_theme_mod( 'sinco' . '_options-mods' );
+		$options = get_theme_mod( 'DataCraft' . '_options-mods' );
 		$ssl     = is_ssl() ? 'https' : 'http';
 
 		$scripts = array(
 		);
 
-		$scripts = apply_filters( 'SINCO/includes/classes/header_enqueue/scripts', $scripts );
+		$scripts = apply_filters( 'DataCraft/includes/classes/header_enqueue/scripts', $scripts );
 		/**
 		 * Enqueue the scripts
 		 *
@@ -64,14 +64,14 @@ class Header_Enqueue {
 
 		$header_data = array(
 			'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'nonce'   => wp_create_nonce( SINCO_NONCE ),
+			'nonce'   => wp_create_nonce( DataCraft_NONCE ),
 		);
 
-		wp_localize_script( 'jquery', 'sinco_data', $header_data );
+		wp_localize_script( 'jquery', 'DataCraft_data', $header_data );
 
-		if ( sinco_set( $options, 'footer_js' ) ) {
+		if ( DataCraft_set( $options, 'footer_js' ) ) {
 
-			wp_add_inline_script( 'jquery', sinco_set( $options, 'footer_js' ) );
+			wp_add_inline_script( 'jquery', DataCraft_set( $options, 'footer_js' ) );
 		}
 
 	}
@@ -83,7 +83,7 @@ class Header_Enqueue {
 	 * @return array Returns the array of styles to load
 	 */
 	public static function styles() {
-		$options     = sinco_WSH()->option();
+		$options     = DataCraft_WSH()->option();
 		$header_meta = get_post_meta( get_the_ID(), 'header_style_settings');
 		$header_option = $options->get( 'header_style_settings' );
 		$header = ( $header_meta ) ? $header_meta['0'] : $header_option;
@@ -106,7 +106,7 @@ class Header_Enqueue {
 		);
 		
 
-		$styles = apply_filters( 'SINCO/includes/classes/header_enqueue/styles', $styles );
+		$styles = apply_filters( 'DataCraft/includes/classes/header_enqueue/styles', $styles );
 
 		/**
 		 * Enqueue the styles
@@ -116,12 +116,12 @@ class Header_Enqueue {
 		foreach ( $styles as $name => $style ) {
 
 			if ( strstr( $style, 'http' ) || strstr( $style, 'https' ) || strstr( $style, 'fonts.googleapis' ) ) {
-				wp_enqueue_style( "sinco-{$name}", $style );
+				wp_enqueue_style( "DataCraft-{$name}", $style );
 			} else {
-				wp_enqueue_style( "sinco-{$name}", get_template_directory_uri() . '/' . $style );
+				wp_enqueue_style( "DataCraft-{$name}", get_template_directory_uri() . '/' . $style );
 			}
 		}
-		$options      = sinco_WSH()->option();
+		$options      = DataCraft_WSH()->option();
 		$custom_style = '';
 
 		wp_add_inline_style( 'color', $custom_style );
@@ -129,10 +129,10 @@ class Header_Enqueue {
 		$header_styles = self::header_styles(); 
 		
 		if ( $custom_font = $options->get('theme_custom_font') ) {
-            $header_styles .= sinco_custom_fonts_load( $custom_font );
+            $header_styles .= DataCraft_custom_fonts_load( $custom_font );
         }
 
-		wp_add_inline_style( 'sinco-main-style', $header_styles );
+		wp_add_inline_style( 'DataCraft-main-style', $header_styles );
 	}
 
 	/**
@@ -145,7 +145,7 @@ class Header_Enqueue {
 	/**
 	 * Add preconnect for Google Fonts.
 	 *
-	 * @since SINCO 1.0
+	 * @since DataCraft 1.0
 	 *
 	 * @param array  $urls          URLs to print for resource hints.
 	 * @param string $relation_type The relation type the URLs are printed.
@@ -153,7 +153,7 @@ class Header_Enqueue {
 	 * @return array $urls           URLs to print for resource hints.
 	 */
 	public static function resource_hints( $urls, $relation_type ) {
-		if ( wp_style_is( 'sinco-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+		if ( wp_style_is( 'DataCraft-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
 			$urls[] = array(
 				'href' => 'https://fonts.gstatic.com',
 				'crossorigin',
@@ -166,15 +166,15 @@ class Header_Enqueue {
 	/**
 	 * header_styles
 	 *
-	 * @since SINCO 1.0
+	 * @since DataCraft 1.0
 	 *
 	 * @param array $urls URLs to print for resource hints.
 	 */
 	public static function header_styles() {
 
-		$data = \SINCO\Includes\Classes\Common::instance()->data( 'blog' )->get();
+		$data = \DataCraft\Includes\Classes\Common::instance()->data( 'blog' )->get();
 
-		$options = sinco_WSH()->option();
+		$options = DataCraft_WSH()->option();
 
 		$styles = '';
 		if ( $options->get( 'footer_top_button' ) ) :
@@ -188,11 +188,11 @@ class Header_Enqueue {
 
 		endif;
 
-		$settings = get_theme_mod( 'sinco' . '_options-mods' );
+		$settings = get_theme_mod( 'DataCraft' . '_options-mods' );
 
-		if ( $custom_font = sinco_set( $settings, 'theme_custom_font' ) ) {
+		if ( $custom_font = DataCraft_set( $settings, 'theme_custom_font' ) ) {
 
-			$styles .= apply_filters('sinco_redux_custom_fonts_load', $custom_font );
+			$styles .= apply_filters('DataCraft_redux_custom_fonts_load', $custom_font );
 
 
 		}

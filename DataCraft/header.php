@@ -7,7 +7,7 @@
  * @since   1.0
  * @version 1.0
  */
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 $allowed_html = wp_kses_allowed_html( 'post' );
 $icon_href = $options->get( 'image_favicon' ); 
 $header_meta = get_post_meta( get_the_ID(), 'header_style_settings');
@@ -86,4 +86,4 @@ if ( ! function_exists( 'wp_body_open' ) ) {
     </section>
 	<?php endif; ?>
     
-<?php do_action( 'sinco_main_header' ); ?>	
+<?php do_action( 'DataCraft_main_header' ); ?>	

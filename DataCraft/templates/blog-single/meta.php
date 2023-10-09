@@ -21,7 +21,7 @@
 
 			<li>
 
-				<?php sinco_template_load( 'templates/like.php', compact( 'data' ) ); ?>
+				<?php DataCraft_template_load( 'templates/like.php', compact( 'data' ) ); ?>
 
 			</li>
 
@@ -45,7 +45,7 @@
 				continue;
 			} ?>
 
-			<?php do_action('sinco_social_share_output', $k ); ?>
+			<?php do_action('DataCraft_social_share_output', $k ); ?>
 
 		<?php } ?>
 

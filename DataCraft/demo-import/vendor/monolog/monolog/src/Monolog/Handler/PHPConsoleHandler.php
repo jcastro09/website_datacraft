@@ -42,7 +42,7 @@ class PHPConsoleHandler extends AbstractProcessingHandler
     private $options = array(
         'enabled' => true, // bool Is PHP Console server enabled
         'classesPartialsTraceIgnore' => array('Monolog\\'), // array Hide calls of classes started with...
-        'debugTagsKeysInContext' => array(0, 'tag'), // bool Is PHP Console server enabled
+        'debugTagsKeyDataCraftntext' => array(0, 'tag'), // bool Is PHP Console server enabled
         'useOwnErrorsHandler' => false, // bool Enable errors handling
         'useOwnExceptionsHandler' => false, // bool Enable exceptions handling
         'sourcesBasePath' => null, // string Base path of all project sources to strip in errors source paths
@@ -216,7 +216,7 @@ class PHPConsoleHandler extends AbstractProcessingHandler
         $tags = null;
         if (!empty($record['context'])) {
             $context = & $record['context'];
-            foreach ($this->options['debugTagsKeysInContext'] as $key) {
+            foreach ($this->options['debugTagsKeyDataCraftntext'] as $key) {
                 if (!empty($context[$key])) {
                     $tags = $context[$key];
                     if ($key === 0) {

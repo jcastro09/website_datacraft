@@ -45,7 +45,7 @@ class WebProcessor
     public function __construct($serverData = null, array $extraFields = null)
     {
         if (null === $serverData) {
-            $this->serverData = sinco_get_server();
+            $this->serverData = DataCraft_get_server();
         } elseif (is_array($serverData) || $serverData instanceof \ArrayAccess) {
             $this->serverData = $serverData;
         } else {

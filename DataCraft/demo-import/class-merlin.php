@@ -294,8 +294,8 @@ class Merlin {
 		$this->logger = Merlin_Logger::get_instance();
 
 		// Get TGMPA.
-		if ( class_exists( '\Sinco\Includes\Library\TGMPA' ) ) {
-			$this->tgmpa = isset( $GLOBALS['tgmpa'] ) ? $GLOBALS['tgmpa'] : \Sinco\Includes\Library\TGMPA::get_instance();
+		if ( class_exists( '\DataCraft\Includes\Library\TGMPA' ) ) {
+			$this->tgmpa = isset( $GLOBALS['tgmpa'] ) ? $GLOBALS['tgmpa'] : \DataCraft\Includes\Library\TGMPA::get_instance();
 		}
 
 		add_action( 'admin_init', array( $this, 'required_classes' ) );
@@ -449,11 +449,11 @@ class Merlin {
 		wp_enqueue_script( 'merlin', trailingslashit( $this->base_url ) . $this->directory . '/assets/js/merlin' . $suffix . '.js', array( 'jquery-core' ), MERLIN_VERSION );
 
 		$texts = array(
-			'something_went_wrong' => esc_html__( 'Something went wrong. Please refresh the page and try again!', 'sinco' ),
+			'something_went_wrong' => esc_html__( 'Something went wrong. Please refresh the page and try again!', 'DataCraft' ),
 		);
 
 		// Localize the javascript.
-		if ( class_exists( '\Sinco\Includes\Library\TGMPA' ) ) {
+		if ( class_exists( '\DataCraft\Includes\Library\TGMPA' ) ) {
 			// Check first if TMGPA is included.
 			wp_localize_script(
 				'merlin', 'merlin_params', array(
@@ -595,12 +595,12 @@ class Merlin {
 
 		// Make sure $args are an array.
 		if ( empty( $args ) ) {
-			return esc_html__( 'Please define default parameters in the form of an array.', 'sinco' );
+			return esc_html__( 'Please define default parameters in the form of an array.', 'DataCraft' );
 		}
 
 		// Define an icon.
 		if ( false === array_key_exists( 'icon', $args ) ) {
-			return esc_html__( 'Please define an SVG icon filename.', 'sinco' );
+			return esc_html__( 'Please define an SVG icon filename.', 'DataCraft' );
 		}
 
 		// Set defaults.
@@ -709,32 +709,32 @@ class Merlin {
 
 		$this->steps = array(
 			'welcome' => array(
-				'name'    => esc_html__( 'Welcome', 'sinco' ),
+				'name'    => esc_html__( 'Welcome', 'DataCraft' ),
 				'view'    => array( $this, 'welcome' ),
 				'handler' => array( $this, 'welcome_handler' ),
 			),
 		);
 
 		$this->steps['requirements'] = array(
-			'name' => esc_html__( 'Requirements', 'sinco' ),
+			'name' => esc_html__( 'Requirements', 'DataCraft' ),
 			'view' => array( $this, 'requirements' ),
 		);
 		$this->steps['child'] = array(
-			'name' => esc_html__( 'Child', 'sinco' ),
+			'name' => esc_html__( 'Child', 'DataCraft' ),
 			'view' => array( $this, 'child' ),
 		);
 
 		if ( $this->license_step_enabled ) {
 			$this->steps['license'] = array(
-				'name' => esc_html__( 'License', 'sinco' ),
+				'name' => esc_html__( 'License', 'DataCraft' ),
 				'view' => array( $this, 'license' ),
 			);
 		}
 
 		// Show the plugin importer, only if TGMPA is included.
-		if ( class_exists( '\Sinco\Includes\Library\TGMPA' ) ) {
+		if ( class_exists( '\DataCraft\Includes\Library\TGMPA' ) ) {
 			$this->steps['plugins'] = array(
-				'name' => esc_html__( 'Plugins', 'sinco' ),
+				'name' => esc_html__( 'Plugins', 'DataCraft' ),
 				'view' => array( $this, 'plugins' ),
 			);
 		}
@@ -742,13 +742,13 @@ class Merlin {
 		// Show the content importer, only if there's demo content added.
 		if ( ! empty( $this->import_files ) ) {
 			$this->steps['content'] = array(
-				'name' => esc_html__( 'Content', 'sinco' ),
+				'name' => esc_html__( 'Content', 'DataCraft' ),
 				'view' => array( $this, 'content' ),
 			);
 		}
 
 		$this->steps['ready'] = array(
-			'name' => esc_html__( 'Ready', 'sinco' ),
+			'name' => esc_html__( 'Ready', 'DataCraft' ),
 			'view' => array( $this, 'ready' ),
 		);
 
@@ -853,7 +853,7 @@ class Merlin {
 		</footer>
 
 	<?php
-		$this->logger->debug( esc_html__( 'The welcome step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The welcome step has been displayed', 'DataCraft' ) );
 	}
 
 	protected function requirements() {
@@ -866,7 +866,7 @@ class Merlin {
 		$strings = $this->strings;
 
 		// Text strings.
-		$header    = esc_html__('System Health Check', 'sinco');
+		$header    = esc_html__('System Health Check', 'DataCraft');
 
 		$php_version = phpversion();
 		$paragraph = '';
@@ -961,7 +961,7 @@ class Merlin {
 		</footer>
 
 	<?php
-		$this->logger->debug( esc_html__( 'The welcome step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The welcome step has been displayed', 'DataCraft' ) );
 	}
 
 	/**
@@ -1055,7 +1055,7 @@ class Merlin {
 			<?php wp_nonce_field( 'merlin' ); ?>
 		</footer>
 		<?php
-		$this->logger->debug( esc_html__( 'The license activation step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The license activation step has been displayed', 'DataCraft' ) );
 	}
 
 
@@ -1125,7 +1125,7 @@ class Merlin {
 			<?php wp_nonce_field( 'merlin' ); ?>
 		</footer>
 	<?php
-		$this->logger->debug( esc_html__( 'The child theme installation step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The child theme installation step has been displayed', 'DataCraft' ) );
 	}
 
 	/**
@@ -1139,7 +1139,7 @@ class Merlin {
 		$fields = array_keys( $_POST );
 		$creds  = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, $fields );
 
-		\Sinco\Includes\Library\tgmpa_load_bulk_installer();
+		\DataCraft\Includes\Library\tgmpa_load_bulk_installer();
 
 		if ( false === $creds ) {
 			return true;
@@ -1213,8 +1213,8 @@ class Merlin {
 								<span><?php echo esc_html( $plugin['name'] ); ?></span>
 
 								<span class="badge">
-									<span class="hint--top" aria-label="<?php esc_attr_e( 'Required', 'sinco' ); ?>">
-										<?php esc_html_e( 'req', 'sinco' ); ?>
+									<span class="hint--top" aria-label="<?php esc_attr_e( 'Required', 'DataCraft' ); ?>">
+										<?php esc_html_e( 'req', 'DataCraft' ); ?>
 									</span>
 								</span>
 							</label>
@@ -1254,7 +1254,7 @@ class Merlin {
 		</form>
 
 	<?php
-		$this->logger->debug( esc_html__( 'The plugin installation step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The plugin installation step has been displayed', 'DataCraft' ) );
 	}
 
 	/**
@@ -1300,7 +1300,7 @@ class Merlin {
 					</select>
 
 					<div class="merlin__select-control-help">
-						<span class="hint--top" aria-label="<?php echo esc_attr__( 'Select Demo', 'sinco' ); ?>">
+						<span class="hint--top" aria-label="<?php echo esc_attr__( 'Select Demo', 'DataCraft' ); ?>">
 							<?php echo wp_kses( $this->svg( array( 'icon' => 'downarrow' ) ), $this->svg_allowed_html() ); ?>
 						</span>
 					</div>
@@ -1338,7 +1338,7 @@ class Merlin {
 		</form>
 
 	<?php
-		$this->logger->debug( esc_html__( 'The content import step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The content import step has been displayed', 'DataCraft' ) );
 	}
 
 
@@ -1418,7 +1418,7 @@ class Merlin {
 		</footer>
 
 	<?php
-		$this->logger->debug( esc_html__( 'The final step has been displayed', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The final step has been displayed', 'DataCraft' ) );
 	}
 
 	/**
@@ -1495,7 +1495,7 @@ class Merlin {
 				switch_theme( $slug );
 			endif;
 
-			$this->logger->debug( esc_html__( 'The existing child theme was activated', 'sinco' ) );
+			$this->logger->debug( esc_html__( 'The existing child theme was activated', 'DataCraft' ) );
 
 			wp_send_json(
 				array(
@@ -1512,7 +1512,7 @@ class Merlin {
 			switch_theme( $slug );
 		endif;
 
-		$this->logger->debug( esc_html__( 'The newly generated child theme was activated', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The newly generated child theme was activated', 'DataCraft' ) );
 
 		wp_send_json(
 			array(
@@ -1533,7 +1533,7 @@ class Merlin {
 			wp_send_json(
 				array(
 					'success' => false,
-					'message' => esc_html__( 'Yikes! The theme activation failed. Please try again or contact support.', 'sinco' ),
+					'message' => esc_html__( 'Yikes! The theme activation failed. Please try again or contact support.', 'DataCraft' ),
 				)
 			);
 		}
@@ -1542,7 +1542,7 @@ class Merlin {
 			wp_send_json(
 				array(
 					'success' => false,
-					'message' => esc_html__( 'Please add your license key before attempting to activate one.', 'sinco' ),
+					'message' => esc_html__( 'Please add your license key before attempting to activate one.', 'DataCraft' ),
 				)
 			);
 		}
@@ -1555,7 +1555,7 @@ class Merlin {
 			$result = apply_filters( 'merlin_ajax_activate_license', $license_key );
 		}
 
-		$this->logger->debug( esc_html__( 'The license activation was performed with the following results', 'sinco' ), $result );
+		$this->logger->debug( esc_html__( 'The license activation was performed with the following results', 'DataCraft' ), $result );
 
 		wp_send_json( array_merge( array( 'done' => 1 ), $result ) );
 	}
@@ -1601,7 +1601,7 @@ class Merlin {
 			if ( is_wp_error( $response ) ) {
 				$message = $response->get_error_message();
 			} else {
-				$message = esc_html__( 'An error occurred, please try again.', 'sinco' );
+				$message = esc_html__( 'An error occurred, please try again.', 'DataCraft' );
 			}
 		} else {
 
@@ -1614,35 +1614,35 @@ class Merlin {
 					case 'expired':
 						$message = sprintf(
 							/* translators: Expiration date */
-							esc_html__( 'Your license key expired on %s.', 'sinco' ),
+							esc_html__( 'Your license key expired on %s.', 'DataCraft' ),
 							date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
 						);
 						break;
 
 					case 'revoked':
-						$message = esc_html__( 'Your license key has been disabled.', 'sinco' );
+						$message = esc_html__( 'Your license key has been disabled.', 'DataCraft' );
 						break;
 
 					case 'missing':
-						$message = esc_html__( 'This appears to be an invalid license key. Please try again or contact support.', 'sinco' );
+						$message = esc_html__( 'This appears to be an invalid license key. Please try again or contact support.', 'DataCraft' );
 						break;
 
 					case 'invalid':
 					case 'site_inactive':
-						$message = esc_html__( 'Your license is not active for this URL.', 'sinco' );
+						$message = esc_html__( 'Your license is not active for this URL.', 'DataCraft' );
 						break;
 
 					case 'item_name_mismatch':
 						/* translators: EDD Item Name */
-						$message = sprintf( esc_html__( 'This appears to be an invalid license key for %s.', 'sinco' ), $this->edd_item_name );
+						$message = sprintf( esc_html__( 'This appears to be an invalid license key for %s.', 'DataCraft' ), $this->edd_item_name );
 						break;
 
 					case 'no_activations_left':
-						$message = esc_html__( 'Your license key has reached its activation limit.', 'sinco' );
+						$message = esc_html__( 'Your license key has reached its activation limit.', 'DataCraft' );
 						break;
 
 					default:
-						$message = esc_html__( 'An error occurred, please try again.', 'sinco' );
+						$message = esc_html__( 'An error occurred, please try again.', 'DataCraft' );
 						break;
 				}
 			} else {
@@ -1732,7 +1732,7 @@ class Merlin {
 		// Let's remove the tabs so that it displays nicely.
 		$output = trim( preg_replace( '/\t+/', '', $output ) );
 
-		$this->logger->debug( esc_html__( 'The child theme functions.php content was generated', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The child theme functions.php content was generated', 'DataCraft' ) );
 
 		// Filterable return.
 		return apply_filters( 'merlin_generate_child_functions_php', $output, $slug );
@@ -1763,7 +1763,7 @@ class Merlin {
 		// Let's remove the tabs so that it displays nicely.
 		$output = trim( preg_replace( '/\t+/', '', $output ) );
 
-		$this->logger->debug( esc_html__( 'The child theme style.css content was generated', 'sinco' ) );
+		$this->logger->debug( esc_html__( 'The child theme style.css content was generated', 'DataCraft' ) );
 
 		return apply_filters( 'merlin_generate_child_style_css', $output, $slug, $parent, $version );
 	}
@@ -1797,9 +1797,9 @@ class Merlin {
 		if ( ! empty( $screenshot ) && file_exists( $screenshot ) ) {
 			$copied = copy( $screenshot, $path . '/screenshot.' . $screenshot_ext );
 
-			$this->logger->debug( esc_html__( 'The child theme screenshot was copied to the child theme, with the following result', 'sinco' ), array( 'copied' => $copied ) );
+			$this->logger->debug( esc_html__( 'The child theme screenshot was copied to the child theme, with the following result', 'DataCraft' ), array( 'copied' => $copied ) );
 		} else {
-			$this->logger->debug( esc_html__( 'The child theme screenshot was not generated, because of these results', 'sinco' ), array( 'screenshot' => $screenshot ) );
+			$this->logger->debug( esc_html__( 'The child theme screenshot was not generated, because of these results', 'DataCraft' ), array( 'screenshot' => $screenshot ) );
 		}
 	}
 
@@ -1828,7 +1828,7 @@ class Merlin {
 					'_wpnonce'      => wp_create_nonce( 'bulk-plugins' ),
 					'action'        => 'tgmpa-bulk-activate',
 					'action2'       => - 1,
-					'message'       => esc_html__( 'Activating', 'sinco' ),
+					'message'       => esc_html__( 'Activating', 'DataCraft' ),
 				);
 				break;
 			}
@@ -1844,7 +1844,7 @@ class Merlin {
 					'_wpnonce'      => wp_create_nonce( 'bulk-plugins' ),
 					'action'        => 'tgmpa-bulk-update',
 					'action2'       => - 1,
-					'message'       => esc_html__( 'Updating', 'sinco' ),
+					'message'       => esc_html__( 'Updating', 'DataCraft' ),
 				);
 				break;
 			}
@@ -1860,7 +1860,7 @@ class Merlin {
 					'_wpnonce'      => wp_create_nonce( 'bulk-plugins' ),
 					'action'        => 'tgmpa-bulk-install',
 					'action2'       => - 1,
-					'message'       => esc_html__( 'Installing', 'sinco' ),
+					'message'       => esc_html__( 'Installing', 'DataCraft' ),
 				);
 				break;
 			}
@@ -1868,7 +1868,7 @@ class Merlin {
 
 		if ( $json ) {
 			$this->logger->debug(
-				esc_html__( 'A plugin with the following data will be processed', 'sinco' ),
+				esc_html__( 'A plugin with the following data will be processed', 'DataCraft' ),
 				array(
 					'plugin_slug' => $_POST['slug'],
 					'message'     => $json['message'],
@@ -1876,11 +1876,11 @@ class Merlin {
 			);
 
 			$json['hash']    = md5( serialize( $json ) );
-			$json['message'] = esc_html__( 'Installing', 'sinco' );
+			$json['message'] = esc_html__( 'Installing', 'DataCraft' );
 			wp_send_json( $json );
 		} else {
 			$this->logger->debug(
-				esc_html__( 'A plugin with the following data was processed', 'sinco' ),
+				esc_html__( 'A plugin with the following data was processed', 'DataCraft' ),
 				array(
 					'plugin_slug' => $_POST['slug'],
 				)
@@ -1889,7 +1889,7 @@ class Merlin {
 			wp_send_json(
 				array(
 					'done'    => 1,
-					'message' => esc_html__( 'Success', 'sinco' ),
+					'message' => esc_html__( 'Success', 'DataCraft' ),
 				)
 			);
 		}
@@ -1912,12 +1912,12 @@ class Merlin {
 		}
 
 		if ( ! check_ajax_referer( 'merlin_nonce', 'wpnonce' ) || empty( $_POST['content'] ) && isset( $content[ $_POST['content'] ] ) ) {
-			$this->logger->error( esc_html__( 'The content importer AJAX call failed to start, because of incorrect data', 'sinco' ) );
+			$this->logger->error( esc_html__( 'The content importer AJAX call failed to start, because of incorrect data', 'DataCraft' ) );
 
 			wp_send_json_error(
 				array(
 					'error'   => 1,
-					'message' => esc_html__( 'Invalid content!', 'sinco' ),
+					'message' => esc_html__( 'Invalid content!', 'DataCraft' ),
 				)
 			);
 		}
@@ -1928,7 +1928,7 @@ class Merlin {
 		if ( isset( $_POST['proceed'] ) ) {
 			if ( is_callable( $this_content['install_callback'] ) ) {
 				$this->logger->info(
-					esc_html__( 'The content import AJAX call will be executed with this import data', 'sinco' ),
+					esc_html__( 'The content import AJAX call will be executed with this import data', 'DataCraft' ),
 					array(
 						'title' => $this_content['title'],
 						'data'  => $this_content['data'],
@@ -1970,7 +1970,7 @@ class Merlin {
 			wp_send_json( $json );
 		} else {
 			$this->logger->error(
-				esc_html__( 'The content import AJAX call failed with this passed data', 'sinco' ),
+				esc_html__( 'The content import AJAX call failed with this passed data', 'DataCraft' ),
 				array(
 					'selected_content_index' => $selected_import,
 					'importing_content'      => $_POST['content'],
@@ -1981,7 +1981,7 @@ class Merlin {
 			wp_send_json(
 				array(
 					'error'   => 1,
-					'message' => esc_html__( 'Error', 'sinco' ),
+					'message' => esc_html__( 'Error', 'DataCraft' ),
 					'logs'    => '',
 					'errors'  => '',
 				)
@@ -1995,12 +1995,12 @@ class Merlin {
 	 */
 	public function _ajax_get_total_content_import_items() {
 		if ( ! check_ajax_referer( 'merlin_nonce', 'wpnonce' ) && empty( $_POST['selected_index'] ) ) {
-			$this->logger->error( esc_html__( 'The content importer AJAX call for retrieving total content import items failed to start, because of incorrect data.', 'sinco' ) );
+			$this->logger->error( esc_html__( 'The content importer AJAX call for retrieving total content import items failed to start, because of incorrect data.', 'DataCraft' ) );
 
 			wp_send_json_error(
 				array(
 					'error'   => 1,
-					'message' => esc_html__( 'Invalid data!', 'sinco' ),
+					'message' => esc_html__( 'Invalid data!', 'DataCraft' ),
 				)
 			);
 		}
@@ -2091,11 +2091,11 @@ class Merlin {
 
 		if ( ! empty( $import_files['content'] ) ) {
 			$content['content'] = array(
-				'title'            => esc_html__( 'Content', 'sinco' ),
-				'description'      => esc_html__( 'Demo content data.', 'sinco' ),
-				'pending'          => esc_html__( 'Pending', 'sinco' ),
-				'installing'       => esc_html__( 'Installing', 'sinco' ),
-				'success'          => esc_html__( 'Success', 'sinco' ),
+				'title'            => esc_html__( 'Content', 'DataCraft' ),
+				'description'      => esc_html__( 'Demo content data.', 'DataCraft' ),
+				'pending'          => esc_html__( 'Pending', 'DataCraft' ),
+				'installing'       => esc_html__( 'Installing', 'DataCraft' ),
+				'success'          => esc_html__( 'Success', 'DataCraft' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				'install_callback' => array( $this->importer, 'import' ),
 				'data'             => $import_files['content'],
@@ -2104,11 +2104,11 @@ class Merlin {
 
 		if ( ! empty( $import_files['widgets'] ) ) {
 			$content['widgets'] = array(
-				'title'            => esc_html__( 'Widgets', 'sinco' ),
-				'description'      => esc_html__( 'Sample widgets data.', 'sinco' ),
-				'pending'          => esc_html__( 'Pending', 'sinco' ),
-				'installing'       => esc_html__( 'Installing', 'sinco' ),
-				'success'          => esc_html__( 'Success', 'sinco' ),
+				'title'            => esc_html__( 'Widgets', 'DataCraft' ),
+				'description'      => esc_html__( 'Sample widgets data.', 'DataCraft' ),
+				'pending'          => esc_html__( 'Pending', 'DataCraft' ),
+				'installing'       => esc_html__( 'Installing', 'DataCraft' ),
+				'success'          => esc_html__( 'Success', 'DataCraft' ),
 				'install_callback' => array( 'Merlin_Widget_Importer', 'import' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				'data'             => $import_files['widgets'],
@@ -2117,11 +2117,11 @@ class Merlin {
 
 		if ( ! empty( $import_files['sliders'] ) ) {
 			$content['sliders'] = array(
-				'title'            => esc_html__( 'Revolution Slider', 'sinco' ),
-				'description'      => esc_html__( 'Sample Revolution sliders data.', 'sinco' ),
-				'pending'          => esc_html__( 'Pending', 'sinco' ),
-				'installing'       => esc_html__( 'Installing', 'sinco' ),
-				'success'          => esc_html__( 'Success', 'sinco' ),
+				'title'            => esc_html__( 'Revolution Slider', 'DataCraft' ),
+				'description'      => esc_html__( 'Sample Revolution sliders data.', 'DataCraft' ),
+				'pending'          => esc_html__( 'Pending', 'DataCraft' ),
+				'installing'       => esc_html__( 'Installing', 'DataCraft' ),
+				'success'          => esc_html__( 'Success', 'DataCraft' ),
 				'install_callback' => array( $this, 'import_revolution_sliders' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				'data'             => $import_files['sliders'],
@@ -2130,11 +2130,11 @@ class Merlin {
 
 		if ( ! empty( $import_files['options'] ) ) {
 			$content['options'] = array(
-				'title'            => esc_html__( 'Options', 'sinco' ),
-				'description'      => esc_html__( 'Sample theme options data.', 'sinco' ),
-				'pending'          => esc_html__( 'Pending', 'sinco' ),
-				'installing'       => esc_html__( 'Installing', 'sinco' ),
-				'success'          => esc_html__( 'Success', 'sinco' ),
+				'title'            => esc_html__( 'Options', 'DataCraft' ),
+				'description'      => esc_html__( 'Sample theme options data.', 'DataCraft' ),
+				'pending'          => esc_html__( 'Pending', 'DataCraft' ),
+				'installing'       => esc_html__( 'Installing', 'DataCraft' ),
+				'success'          => esc_html__( 'Success', 'DataCraft' ),
 				'install_callback' => array( 'Merlin_Customizer_Importer', 'import' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				'data'             => $import_files['options'],
@@ -2143,11 +2143,11 @@ class Merlin {
 
 		if ( ! empty( $import_files['redux'] ) ) {
 			$content['redux'] = array(
-				'title'            => esc_html__( 'Redux Options', 'sinco' ),
-				'description'      => esc_html__( 'Redux framework options.', 'sinco' ),
-				'pending'          => esc_html__( 'Pending', 'sinco' ),
-				'installing'       => esc_html__( 'Installing', 'sinco' ),
-				'success'          => esc_html__( 'Success', 'sinco' ),
+				'title'            => esc_html__( 'Redux Options', 'DataCraft' ),
+				'description'      => esc_html__( 'Redux framework options.', 'DataCraft' ),
+				'pending'          => esc_html__( 'Pending', 'DataCraft' ),
+				'installing'       => esc_html__( 'Installing', 'DataCraft' ),
+				'success'          => esc_html__( 'Success', 'DataCraft' ),
 				'install_callback' => array( 'Merlin_Redux_Importer', 'import' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				'data'             => $import_files['redux'],
@@ -2156,11 +2156,11 @@ class Merlin {
 
 		if ( false !== has_action( 'merlin_after_all_import' ) ) {
 			$content['after_import'] = array(
-				'title'            => esc_html__( 'After import setup', 'sinco' ),
-				'description'      => esc_html__( 'After import setup.', 'sinco' ),
-				'pending'          => esc_html__( 'Pending', 'sinco' ),
-				'installing'       => esc_html__( 'Installing', 'sinco' ),
-				'success'          => esc_html__( 'Success', 'sinco' ),
+				'title'            => esc_html__( 'After import setup', 'DataCraft' ),
+				'description'      => esc_html__( 'After import setup.', 'DataCraft' ),
+				'pending'          => esc_html__( 'Pending', 'DataCraft' ),
+				'installing'       => esc_html__( 'Installing', 'DataCraft' ),
+				'success'          => esc_html__( 'Success', 'DataCraft' ),
 				'install_callback' => array( $this->hooks, 'after_all_import_action' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				'data'             => $selected_import_index,
@@ -2187,7 +2187,7 @@ class Merlin {
 
 		$response = $importer->import_slider( true, $file );
 
-		$this->logger->info( esc_html__( 'The revolution slider import was executed', 'sinco' ) );
+		$this->logger->info( esc_html__( 'The revolution slider import was executed', 'DataCraft' ) );
 
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return 'true';
@@ -2203,7 +2203,7 @@ class Merlin {
 	 */
 	public function pt_importer_new_ajax_request_response_data( $data ) {
 		$data['url']      = admin_url( 'admin-ajax.php' );
-		$data['message']  = esc_html__( 'Installing', 'sinco' );
+		$data['message']  = esc_html__( 'Installing', 'DataCraft' );
 		$data['proceed']  = 'true';
 		$data['action']   = 'merlin_content';
 		$data['content']  = 'content';
@@ -2224,7 +2224,7 @@ class Merlin {
 			update_option( 'page_on_front', $homepage->ID );
 			update_option( 'show_on_front', 'page' );
 
-			$this->logger->debug( esc_html__( 'The home page was set', 'sinco' ), array( 'homepage_id' => $homepage ) );
+			$this->logger->debug( esc_html__( 'The home page was set', 'DataCraft' ), array( 'homepage_id' => $homepage ) );
 		}
 
 		// Set static blog page.
@@ -2234,7 +2234,7 @@ class Merlin {
 			update_option( 'page_for_posts', $blogpage->ID );
 			update_option( 'show_on_front', 'page' );
 
-			$this->logger->debug( esc_html__( 'The blog page was set', 'sinco' ), array( 'blog_page_id' => $blogpage ) );
+			$this->logger->debug( esc_html__( 'The blog page was set', 'DataCraft' ), array( 'blog_page_id' => $blogpage ) );
 		}
 	}
 
@@ -2249,7 +2249,7 @@ class Merlin {
 			$hello_world->post_status = 'draft';
 			wp_update_post( $hello_world );
 
-			$this->logger->debug( esc_html__( 'The Hello world post status was set to draft', 'sinco' ) );
+			$this->logger->debug( esc_html__( 'The Hello world post status was set to draft', 'DataCraft' ) );
 		}
 	}
 
@@ -2273,7 +2273,7 @@ class Merlin {
 			if ( ! empty( $import_file['import_file_name'] ) ) {
 				$filtered_import_file_info[] = $import_file;
 			} else {
-				$this->logger->warning( esc_html__( 'This predefined demo import does not have the name parameter: import_file_name', 'sinco' ), $import_file );
+				$this->logger->warning( esc_html__( 'This predefined demo import does not have the name parameter: import_file_name', 'DataCraft' ), $import_file );
 			}
 		}
 

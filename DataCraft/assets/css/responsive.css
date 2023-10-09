@@ -2,7 +2,7 @@
 
 /* 
     Created on   : 27/01/2022.
-    Theme Name   : Sinco - Data Science & Analytics HTML5 Template
+    Theme Name   : DataCraft
     Version      : 1.0.
     Developed by : (me@heloshape.com) / (www.me.heloshape.com)
    
@@ -441,11 +441,11 @@
   .admin-bar .theme-main-menu.sticky-menu.fixed{
 	top:46px;  
   }
-  .sinco-comment-item .sinco-comment-item{
+  .DataCraft-comment-item .DataCraft-comment-item{
 	margin-left:0px;	
   }
   .footer-widget.widget_nav_menu,
-  .footer-widget.widget_sinco_latest_news{
+  .footer-widget.widget_DataCraft_latest_news{
 	 margin-bottom :40px;
   }
   .theme-basic-footer .subscribe-form form input{

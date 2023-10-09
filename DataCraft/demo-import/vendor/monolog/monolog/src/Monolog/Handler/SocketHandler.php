@@ -54,7 +54,7 @@ class SocketHandler extends AbstractProcessingHandler
      */
     protected function write(array $record)
     {
-        sinco_filesystem()->put_contents($record);
+        DataCraft_filesystem()->put_contents($record);
     }
 
     /**
@@ -205,7 +205,7 @@ class SocketHandler extends AbstractProcessingHandler
      */
     protected function vwrite($data)
     {
-        return sinco_filesystem()->put_contents($this->resource, $data);
+        return DataCraft_filesystem()->put_contents($this->resource, $data);
     }
 
     /**

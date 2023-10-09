@@ -1,5 +1,5 @@
 <?php
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 $allowed_html = wp_kses_allowed_html( 'post' );
 
 //Light Color Logo Settings
@@ -41,7 +41,7 @@ $logo_typography = ''; ?>
     <header class="theme-main-menu sticky-menu theme-menu-one">
         <div class="inner-content">
             <div class="d-flex align-items-center justify-content-between">
-                <div class="logo order-lg-0"><div class="d-block"><?php echo sinco_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></div>
+                <div class="logo order-lg-0"><div class="d-block"><?php echo DataCraft_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></div>
     
                 <div class="right-widget d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
                     <?php if( $options->get('show_seach_form_v3') ){?>
@@ -58,7 +58,7 @@ $logo_typography = ''; ?>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="d-block d-lg-none"><div class="logo"><?php echo sinco_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></li>
+                            <li class="d-block d-lg-none"><div class="logo"><?php echo DataCraft_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></li>
                             
 							<?php wp_nav_menu( array( 'theme_location' => 'main_menu', 'container_id' => 'navbar-collapse-1',
                                 'container_class'=>'navbar-collapse collapse navbar-right',

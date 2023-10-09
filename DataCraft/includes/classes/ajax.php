@@ -1,16 +1,16 @@
 <?php
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
 class Ajax {
 
 	function actions() {
-		add_action( 'wp_ajax_sinco_ajax', array( $this, 'ajax_handler' ) );
-		add_action( 'wp_ajax_nopriv_sinco_ajax', array( $this, 'ajax_handler' ) );
+		add_action( 'wp_ajax_DataCraft_ajax', array( $this, 'ajax_handler' ) );
+		add_action( 'wp_ajax_nopriv_DataCraft_ajax', array( $this, 'ajax_handler' ) );
 	}
 
 	function ajax_handler() {
 
-		$method = sinco_set( $_REQUEST, 'subaction' );
+		$method = DataCraft_set( $_REQUEST, 'subaction' );
 		if ( method_exists( $this, $method ) ) {
 			$this->$method();
 		}
@@ -18,12 +18,12 @@ class Ajax {
 
 	}
 
-	function sinco_project_loadmore() {
+	function DataCraft_project_loadmore() {
 		$allowed_html = wp_kses_allowed_html( 'post' );
 		if ( class_exists( 'Douens_Resizer' ) ) {
-			$img_obj = new \Sinco_Resizer();
+			$img_obj = new \DataCraft_Resizer();
 		}
-		$args = sinco_set( $_POST, 'query' );
+		$args = DataCraft_set( $_POST, 'query' );
 		if ( ! empty( $args['paged'] ) AND ! empty( $args['posts_per_page'] ) AND ! empty( $args['order'] ) ) {
 			$args['paged']    = $args['paged'] + 1;
 			$args['post_type'] = 'project';
@@ -56,27 +56,27 @@ class Ajax {
 				}
 				wp_reset_postdata();
 				$output = ob_get_clean();
-				$button = '<a class="loadmore-btn" href="javascript:void(0)" data-attr=\'' . json_encode($args) . '\' ><i class="flaticon-load theme-bg"></i>' . esc_html__( "Load More", "sinco" ) . '</a>';
+				$button = '<a class="loadmore-btn" href="javascript:void(0)" data-attr=\'' . json_encode($args) . '\' ><i class="flaticon-load theme-bg"></i>' . esc_html__( "Load More", "DataCraft" ) . '</a>';
 				wp_send_json( [
 					'post'   => $output,
 					'button' => $button,
 				] );
 			} else {
 			    wp_reset_postdata();
-				wp_send_json( [ 'button' => '<a class="loadmore-btn" href="javascript:void(0)"><i class="flaticon-load theme-bg"></i>' . esc_html__( "No More Post", "sinco" ) . '</a>' ] );
+				wp_send_json( [ 'button' => '<a class="loadmore-btn" href="javascript:void(0)"><i class="flaticon-load theme-bg"></i>' . esc_html__( "No More Post", "DataCraft" ) . '</a>' ] );
 			}
 			exit;
 		} else {
-			wp_send_json( [ 'button' => '<a class="loadmore-btn" href="javascript:void(0)"><i class="flaticon-load theme-bg"></i>' . esc_html__( "No More Post", "sinco" ) . '</a>' ] );
+			wp_send_json( [ 'button' => '<a class="loadmore-btn" href="javascript:void(0)"><i class="flaticon-load theme-bg"></i>' . esc_html__( "No More Post", "DataCraft" ) . '</a>' ] );
 		}
 		exit;
 	}
 
-	function sinco_project_loadmore2() {
-		if ( class_exists( 'Sinco_Resizer' ) ) {
-			$img_obj = new \Sinco_Resizer();
+	function DataCraft_project_loadmore2() {
+		if ( class_exists( 'DataCraft_Resizer' ) ) {
+			$img_obj = new \DataCraft_Resizer();
 		}
-		$args              = sinco_set( $_POST, 'query' );
+		$args              = DataCraft_set( $_POST, 'query' );
 		$args['post_type'] = 'project';
 		$query             = new \WP_Query( $args );
 		if ( $query->have_posts() ) {
@@ -108,13 +108,13 @@ class Ajax {
 			}
 			wp_reset_postdata();
 			$output = ob_get_clean();
-			$button = '<a class="loadmore-btn" href="javascript:void(0)" data-offset="' . ( sinco_set( $args, 'offset' ) + sinco_set( $args, 'showposts' ) ) . '" data-order="' . sinco_set( $args, 'order' ) . '" data-orderby="' . sinco_set( $args, 'orderby' ) . '" data-count="' . sinco_set( $args, 'showposts' ) . '"><i class="flaticon-load theme-bg"></i>' . esc_html__( "Load More", "sinco" ) . '</a>';
+			$button = '<a class="loadmore-btn" href="javascript:void(0)" data-offset="' . ( DataCraft_set( $args, 'offset' ) + DataCraft_set( $args, 'showposts' ) ) . '" data-order="' . DataCraft_set( $args, 'order' ) . '" data-orderby="' . DataCraft_set( $args, 'orderby' ) . '" data-count="' . DataCraft_set( $args, 'showposts' ) . '"><i class="flaticon-load theme-bg"></i>' . esc_html__( "Load More", "DataCraft" ) . '</a>';
 			wp_send_json( [
 				'post'   => $output,
 				'button' => $button,
 			] );
 		} else {
-			wp_send_json( [ 'button' => $button = '<a class="loadmore-btn" href="javascript:void(0)"><i class="flaticon-load theme-bg"></i>' . esc_html__( "No More Post", "sinco" ) . '</a>' ] );
+			wp_send_json( [ 'button' => $button = '<a class="loadmore-btn" href="javascript:void(0)"><i class="flaticon-load theme-bg"></i>' . esc_html__( "No More Post", "DataCraft" ) . '</a>' ] );
 		}
 		exit;
 	}

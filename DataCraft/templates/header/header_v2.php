@@ -1,5 +1,5 @@
 <?php
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 $allowed_html = wp_kses_allowed_html( 'post' );
 
 //Light Color Logo Settings
@@ -56,7 +56,7 @@ $logo_typography = ''; ?>
             </div> <!-- /.top-header -->
             <?php } ?>
             <div class="container d-flex align-items-center justify-content-between">
-                <div class="logo order-lg-0"><div class="d-block"><?php echo sinco_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></div>
+                <div class="logo order-lg-0"><div class="d-block"><?php echo DataCraft_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></div>
                 
 				<?php if( $options->get('show_button_v2') and $options->get('btn_link_v2') ){?>
                 <a href="<?php echo esc_url($options->get('btn_link_v2')); ?>" class="get-in-touch-btn d-none d-lg-block order-lg-3"><?php echo wp_kses($options->get('btn_title_v2'), true); ?></a>
@@ -68,7 +68,7 @@ $logo_typography = ''; ?>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                           <li class="d-block d-lg-none"><div class="logo"><?php echo sinco_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></li>
+                           <li class="d-block d-lg-none"><div class="logo"><?php echo DataCraft_logo( $logo_type, $color_logo, $color_logo_dimension, $logo_text, $logo_typography ); ?></div></li>
 						   
 						   <?php wp_nav_menu( array( 'theme_location' => 'main_menu', 'container_id' => 'navbar-collapse-1',
                                 'container_class'=>'navbar-collapse collapse navbar-right',

@@ -16,14 +16,14 @@ $get_tags   = get_the_tag_list( get_the_ID() );
 		<?php if ( $get_tags ) : ?>
 
 
-			<span><i class="fa fa-tags"></i><?php esc_html_e( 'tags:', 'sinco' ); ?></span>
+			<span><i class="fa fa-tags"></i><?php esc_html_e( 'tags:', 'DataCraft' ); ?></span>
 
 			<ul>
 
 				<?php foreach ( $tags as $tag ) : ?>
 
 					<li>
-						<a href="<?php echo esc_url( get_tag_link( sinco_set( $tag, 'term_id' ) ) ); ?>"><?php echo esc_html( sinco_set( $tag, 'name' ) ); ?></a>
+						<a href="<?php echo esc_url( get_tag_link( DataCraft_set( $tag, 'term_id' ) ) ); ?>"><?php echo esc_html( DataCraft_set( $tag, 'name' ) ); ?></a>
 					</li>
 
 				<?php endforeach; ?>
@@ -33,7 +33,7 @@ $get_tags   = get_the_tag_list( get_the_ID() );
 		<?php if ( has_category() ) : ?>
 			<div class="cat-area">
 
-				<span><i class="fa fa-list-alt"></i><?php esc_html_e( 'categories:', 'sinco' ); ?></span>
+				<span><i class="fa fa-list-alt"></i><?php esc_html_e( 'categories:', 'DataCraft' ); ?></span>
 
 				<ul>
 

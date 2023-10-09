@@ -8,7 +8,7 @@
  */
 
 get_header();
-$data  = \SINCO\Includes\Classes\Common::instance()->data( 'single' )->get();
+$data  = \DataCraft\Includes\Classes\Common::instance()->data( 'single' )->get();
 $layout = $data->get( 'layout' );
 $sidebar = $data->get( 'sidebar' );
 if (is_active_sidebar( $sidebar )) {$layout = 'right';} else{$layout = 'full';}
@@ -16,14 +16,14 @@ $class = ( !$layout || $layout == 'full' ) ? 'col-xs-12 col-sm-12 col-md-12' : '
 ?>
 
 <?php if ( class_exists( '\Elementor\Plugin' )):?>
-	<?php do_action( 'sinco_banner', $data );?>
+	<?php do_action( 'DataCraft_banner', $data );?>
 <?php else:?>
 <!--Start breadcrumb area paroller-->     
 <div class="theme-inner-banner">
     <div class="container">
         <h2 class="intro-title text-center"><?php if( $data->get( 'title' ) ) echo wp_kses( $data->get( 'title' ), true ); else( wp_title( '' ) ); ?></h2>
         <ul class="page-breadcrumb style-none d-flex justify-content-center">
-            <?php echo sinco_the_breadcrumb(); ?>
+            <?php echo DataCraft_the_breadcrumb(); ?>
         </ul>
     </div>
     <img src="<?php echo esc_url(get_template_directory_uri());?>/assets/images/shape/shape_38.svg" alt="" class="shapes shape-one">
@@ -40,7 +40,7 @@ $class = ( !$layout || $layout == 'full' ) ? 'col-xs-12 col-sm-12 col-md-12' : '
 				<div class="row">
 				<?php
                     if ( $data->get( 'layout' ) == 'left' ) {
-                        do_action( 'sinco_sidebar', $data );
+                        do_action( 'DataCraft_sidebar', $data );
                     }
                 ?>
                 <div class="content-side <?php echo esc_attr( $class ); ?>">
@@ -53,7 +53,7 @@ $class = ( !$layout || $layout == 'full' ) ? 'col-xs-12 col-sm-12 col-md-12' : '
                         <div class="clearfix"></div>
                         <?php
                         $defaults = array(
-                            'before' => '<div class="paginate-links">' . esc_html__( 'Pages:', 'sinco' ),
+                            'before' => '<div class="paginate-links">' . esc_html__( 'Pages:', 'DataCraft' ),
                             'after'  => '</div>',
         
                         );
@@ -66,7 +66,7 @@ $class = ( !$layout || $layout == 'full' ) ? 'col-xs-12 col-sm-12 col-md-12' : '
                 <?php
                     if ( $layout == 'right' ) {
                         $data->set('sidebar', 'default-sidebar');
-                        do_action( 'sinco_sidebar', $data );
+                        do_action( 'DataCraft_sidebar', $data );
                     }
                 ?>
         

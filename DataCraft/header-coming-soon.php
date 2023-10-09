@@ -7,7 +7,7 @@
  * @since   1.0
  * @version 1.0
  */
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 $allowed_html = wp_kses_allowed_html( 'post' );
 $icon_href = $options->get( 'image_favicon' ); 
 ?>
@@ -44,7 +44,7 @@ if (! function_exists('wp_body_open')) {
 <div class="main-page-wrapper">
 	<?php if( $options->get( 'theme_preloader' ) ):	
         $preloader_img    = $options->get( 'preloader_img' );
-        $preloader_img    = sinso_set( $preloader_img, 'url', SINCO_URI . 'images/logo/immmigo.svg' );
+        $preloader_img    = sinso_set( $preloader_img, 'url', DataCraft_URI . 'images/logo/immmigo.svg' );
     ?>
     <!-- ===================================================
             Loading Transition

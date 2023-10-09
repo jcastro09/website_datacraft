@@ -9,8 +9,8 @@
 
 ?>
 <?php
-if ( class_exists( 'Sinco_Resizer' ) ) {
-	$img_obj = new Sinco_Resizer();
+if ( class_exists( 'DataCraft_Resizer' ) ) {
+	$img_obj = new DataCraft_Resizer();
 
 }
 $width = $data->get( 'sidebar' ) ? '769' : '1170';
@@ -19,7 +19,7 @@ $allowed_html = wp_kses_allowed_html( 'post' );
 
 
 <div class="single-avatar singlee">
-	<?php if ( class_exists( 'Sinco_Resizer' ) ) : ?>
+	<?php if ( class_exists( 'DataCraft_Resizer' ) ) : ?>
 
 		<?php echo wp_kses( $img_obj->resize( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ), 'full' ), $width, 460, true ), $allowed_html ); ?>
 	<?php else : ?>

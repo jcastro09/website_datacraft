@@ -11,13 +11,13 @@
 $allowed_html = wp_kses_allowed_html( 'post' );
 
 $error_img   = $options->get( 'error_image' );
-$error_img   = sinco_set( $error_img, 'url', SINCO_URI . 'assets/images/shape/404.png' );
+$error_img   = DataCraft_set( $error_img, 'url', DataCraft_URI . 'assets/images/shape/404.png' );
 
 ?>
 <?php get_header();
-$data = \SINCO\Includes\Classes\Common::instance()->data( '404' )->get();
-do_action( 'sinco_banner', $data );
-$options = sinco_WSH()->option();
+$data = \DataCraft\Includes\Classes\Common::instance()->data( '404' )->get();
+do_action( 'DataCraft_banner', $data );
+$options = DataCraft_WSH()->option();
 if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND $data->get( 'tpl-elementor' ) ) {
 	echo Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $data->get( 'tpl-elementor' ) );
 } else {
@@ -39,7 +39,7 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
 							if( $options->get( '404_page_title' ) ){
 								echo wp_kses( $options->get( '404_page_title' ), true );
 							}else{
-								esc_html_e( ' Oops! Something is wrong.', 'sinco' );
+								esc_html_e( ' Oops! Something is wrong.', 'DataCraft' );
 							}
 						?>
                      </h2>
@@ -48,7 +48,7 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
                                 if( $options->get( '404_page_text' ) ){
                                     echo wp_kses( $options->get( '404_page_text' ), true );
                                 }else{
-                                    esc_html_e( ' Can not find what you need? Take a moment and do a search below or start from our Homepage.', 'sinco' );
+                                    esc_html_e( ' Can not find what you need? Take a moment and do a search below or start from our Homepage.', 'DataCraft' );
                                 }
                             ?>
                       </p>
@@ -58,7 +58,7 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
                                 if( $options->get( 'back_home_btn_label' ) ){
                                     echo wp_kses( $options->get( 'back_home_btn_label' ), true );
                                 }else{
-                                    esc_html_e( 'Back to home', 'sinco' );
+                                    esc_html_e( 'Back to home', 'DataCraft' );
                                 }
                             ?>
                       </a>
@@ -66,10 +66,10 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
                   </div>
               </div>
               <?php if($error_img): ?> 
-              	<img src="<?php echo esc_url($error_img); ?>" alt="<?php esc_attr_e('Awesome Image', 'sinco'); ?>" class="m-auto">
+              	<img src="<?php echo esc_url($error_img); ?>" alt="<?php esc_attr_e('Awesome Image', 'DataCraft'); ?>" class="m-auto">
           	  <?php endif; ?>
           </div>
-          <img src="<?php echo esc_url(get_template_directory_uri());?>/assets/images/shape/shape_49.svg" alt="<?php esc_attr_e('Awesome Image', 'sinco'); ?>" class="shapes shape-one w-100">
+          <img src="<?php echo esc_url(get_template_directory_uri());?>/assets/images/shape/shape_49.svg" alt="<?php esc_attr_e('Awesome Image', 'DataCraft'); ?>" class="shapes shape-one w-100">
       </div> <!-- /.error-page-content -->
         
 <?php

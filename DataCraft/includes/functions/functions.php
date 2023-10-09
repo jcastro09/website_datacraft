@@ -1,35 +1,35 @@
 <?php
 
 /**
- * [sinco_WSH description]
+ * [DataCraft_WSH description]
  *
  * @return [type] [description]
  */
-function sinco_WSH() {
-	return \SINCO\Includes\Classes\Base::instance();
+function DataCraft_WSH() {
+	return \DataCraft\Includes\Classes\Base::instance();
 }
 
 /**
- * [sinco_dot description]
+ * [DataCraft_dot description]
  *
  * @param  array $data [description]
  *
  * @return [type]       [description]
  */
-function sinco_dot( $data = array() ) {
-	$dn = new \SINCO\Includes\Classes\DotNotation( $data );
+function DataCraft_dot( $data = array() ) {
+	$dn = new \DataCraft\Includes\Classes\DotNotation( $data );
 
 	return $dn;
 }
 
 /**
- * [sinco_meta description].
+ * [DataCraft_meta description].
  *
  * @param array $data [description]
  *
  * @return [type] [description]
  */
-function sinco_meta( $key, $id = '' ) {
+function DataCraft_meta( $key, $id = '' ) {
 	if ( empty( $id ) ) {
 		$id = get_the_ID();
 	}
@@ -37,13 +37,13 @@ function sinco_meta( $key, $id = '' ) {
 	return ( get_post_meta( $id, $key, true ) ) ? get_post_meta( $id, $key, true ) : '';
 }
 
-function sincoc_app( $class = 'base', $instance = true ) {
+function DataCraftc_app( $class = 'base', $instance = true ) {
 	$all   = array(
-		'base' => '\SINCO\Includes\Classes\Base',
-		'vc'   => '\SINCO\Includes\Classes\Visual_Composer',
-		'ajax' => '\SINCO\Includes\Classes\Ajax',
+		'base' => '\DataCraft\Includes\Classes\Base',
+		'vc'   => '\DataCraft\Includes\Classes\Visual_Composer',
+		'ajax' => '\DataCraft\Includes\Classes\Ajax',
 	);
-	$dn    = sinco_dot( $all );
+	$dn    = DataCraft_dot( $all );
 	$class = ( $dn->get( $class ) ) ? $dn->get( $class ) : 'base';
 	if ( $dn->get( $class ) ) {
 		if ( $instance ) {
@@ -52,24 +52,24 @@ function sincoc_app( $class = 'base', $instance = true ) {
 			return $dn->get( $classs );
 		}
 	} else {
-		exit( esc_html__( 'No class found', 'sinco' ) );
+		exit( esc_html__( 'No class found', 'DataCraft' ) );
 	}
 }
 
 /**
  * Use front-page.php when Front page displays is set to a static page.
  *
- * @since SINCO 1.0
+ * @since DataCraft 1.0
  *
  * @param string $template front-page.php.
  *
  * @return string The template to be used: blank if is_home() is true (defaults to index.php), else $template.
  */
-function sinco_front_page_template( $template ) {
+function DataCraft_front_page_template( $template ) {
 	return is_home() ? '' : $template;
 }
 
-add_filter( 'frontpage_template', 'sinco_front_page_template' );
+add_filter( 'frontpage_template', 'DataCraft_front_page_template' );
 if ( ! function_exists( 'printr' ) ) {
 	function printr( $arr ) {
 		echo '<pre>';
@@ -80,14 +80,14 @@ if ( ! function_exists( 'printr' ) ) {
 }
 
 /**
- * [sinco_template_load description]
+ * [DataCraft_template_load description]
  *
  * @param  string $template [description]
  * @param  array  $args     [description]
  *
  * @return [type]           [description]
  */
-function sinco_template_load( $templ = '', $args = array() ) {
+function DataCraft_template_load( $templ = '', $args = array() ) {
 	$template = get_theme_file_path( $templ );
 	if ( file_exists( $template ) ) {
 		extract( $args );
@@ -97,13 +97,13 @@ function sinco_template_load( $templ = '', $args = array() ) {
 }
 
 /**
- * [sinco_get_sidebars description]
+ * [DataCraft_get_sidebars description]
  *
  * @param  boolean $multi [description].
  *
  * @return [type]         [description]
  */
-function sinco_get_sidebars( $multi = false ) {
+function DataCraft_get_sidebars( $multi = false ) {
 	global $wp_registered_sidebars;
 	$sidebars = ! ( $wp_registered_sidebars ) ? get_option( 'wp_registered_sidebars' ) : $wp_registered_sidebars;
 	if ( $multi ) {
@@ -111,49 +111,49 @@ function sinco_get_sidebars( $multi = false ) {
 	}
 	foreach ( (array) $sidebars as $sidebar ) {
 		if ( $multi ) {
-			$data[] = array( 'value' => sinco_set( $sidebar, 'id' ), 'label' => sinco_set( $sidebar, 'name' ) );
+			$data[] = array( 'value' => DataCraft_set( $sidebar, 'id' ), 'label' => DataCraft_set( $sidebar, 'name' ) );
 		} else {
-			$data[ sinco_set( $sidebar, 'id' ) ] = sinco_set( $sidebar, 'name' );
+			$data[ DataCraft_set( $sidebar, 'id' ) ] = DataCraft_set( $sidebar, 'name' );
 		}
 	}
 
 	return $data;
 }
 
-add_action( 'tgmpa_register', 'sinco_register_required_plugins' );
+add_action( 'tgmpa_register', 'DataCraft_register_required_plugins' );
 /**
  * [my_theme_register_required_plugins description]
  *
  * @return void [description]
  */
-function sinco_register_required_plugins() {
+function DataCraft_register_required_plugins() {
 	$plugins = array(
 		array(
-			'name'               => esc_html__( 'Sinco Plugin', 'sinco' ),
-			'slug'               => 'sinco-plugin',
-			'source'             => get_template_directory() . '/includes/thirdparty/plugins/sinco-plugin.zip',
+			'name'               => esc_html__( 'DataCraft Plugin', 'DataCraft' ),
+			'slug'               => 'DataCraft-plugin',
+			'source'             => get_template_directory() . '/includes/thirdparty/plugins/DataCraft-plugin.zip',
 			'required'           => true,
 			'force_deactivation' => false,
-			'file_path'          => ABSPATH . 'wp-content/plugins/sinco-plugin/sinco-plugin.php',
+			'file_path'          => ABSPATH . 'wp-content/plugins/DataCraft-plugin/DataCraft-plugin.php',
 		),
 		array(
-			'name'			=> esc_html__('Contact Form 7', 'sinco'),
+			'name'			=> esc_html__('Contact Form 7', 'DataCraft'),
 			'slug'			=> 'contact-form-7',
 			'required'		=> true,
 		),
 		array(
-			'name'     => esc_html__( 'Elementor', 'sinco' ),
+			'name'     => esc_html__( 'Elementor', 'DataCraft' ),
 			'slug'     => 'elementor',
 			'required' => true,
 		),
 		array(
-            'name'      => esc_html__('Mailchimp for WordPress', 'sinco'),
+            'name'      => esc_html__('Mailchimp for WordPress', 'DataCraft'),
             'slug'      => 'mailchimp-for-wp',
             'required'  => true,
 		),
 	);
 	/*Change this to your theme text domain, used for internationalising strings.*/
-	$theme_text_domain = 'sinco';
+	$theme_text_domain = 'DataCraft';
 	$config            = array(
 		'id'           => 'tgmpa',
 		'default_path' => '',
@@ -166,34 +166,34 @@ function sinco_register_required_plugins() {
 		'is_automatic' => false,
 		'message'      => '',
 	);
-	SINCO\Includes\Library\tgmpa( $plugins, $config );
+	DataCraft\Includes\Library\tgmpa( $plugins, $config );
 }
 
 /**
- * [sinco_logo description]
+ * [DataCraft_logo description]
  *
  * @return [type] [description]
  */
-function sinco_logo( $logo_type, $image_logo, $logo_dimension, $logo_text, $logo_typography ) {
+function DataCraft_logo( $logo_type, $image_logo, $logo_dimension, $logo_text, $logo_typography ) {
 	if ( $logo_type === 'text' ) {
-		$logo       = $logo_text ? $logo_text : '<span>' . esc_html__( 'SINCO', 'sinco' ) . '</span>';
+		$logo       = $logo_text ? $logo_text : '<span>' . esc_html__( 'DataCraft', 'DataCraft' ) . '</span>';
 		$logo_style = $logo_typography;
-		$logo_the_style  = ( sinco_set( $logo_style, 'font-size' ) ) ? 'font-size:' . sinco_set( $logo_style, 'font-size' ) . ';' : '';
-		$logo_the_style  .= ( sinco_set( $logo_style, 'font-family' ) ) ? "font-family:'" . sinco_set( $logo_style, 'font-family' ) . "';" : '';
-		$logo_the_style  .= ( sinco_set( $logo_style, 'font-weight' ) ) ? 'font-weight:' . sinco_set( $logo_style, 'font-weight' ) . ';' : '';
-		$logo_the_style  .= ( sinco_set( $logo_style, 'line-height' ) ) ? 'line-height:' . sinco_set( $logo_style, 'line-height' ) . ';' : '';
-		$logo_the_style  .= ( sinco_set( $logo_style, 'color' ) ) ? 'color:' . sinco_set( $logo_style, 'color' ) . ';' : '';
-		$logo_the_style  .= ( sinco_set( $logo_style, 'letter-spacing' ) ) ? 'letter-spacing:' . sinco_set( $logo_style, 'letter-spacing' ) . ';' : '';
+		$logo_the_style  = ( DataCraft_set( $logo_style, 'font-size' ) ) ? 'font-size:' . DataCraft_set( $logo_style, 'font-size' ) . ';' : '';
+		$logo_the_style  .= ( DataCraft_set( $logo_style, 'font-family' ) ) ? "font-family:'" . DataCraft_set( $logo_style, 'font-family' ) . "';" : '';
+		$logo_the_style  .= ( DataCraft_set( $logo_style, 'font-weight' ) ) ? 'font-weight:' . DataCraft_set( $logo_style, 'font-weight' ) . ';' : '';
+		$logo_the_style  .= ( DataCraft_set( $logo_style, 'line-height' ) ) ? 'line-height:' . DataCraft_set( $logo_style, 'line-height' ) . ';' : '';
+		$logo_the_style  .= ( DataCraft_set( $logo_style, 'color' ) ) ? 'color:' . DataCraft_set( $logo_style, 'color' ) . ';' : '';
+		$logo_the_style  .= ( DataCraft_set( $logo_style, 'letter-spacing' ) ) ? 'letter-spacing:' . DataCraft_set( $logo_style, 'letter-spacing' ) . ';' : '';
 		$logo_output       = '<a style="' . $logo_the_style . '" href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'name' ) . '">' . wp_kses( $logo, true ) . '</a>';
 	} else {
 		$logo_the_style      = '';
 		$logo_image_style = '';
-		$logo_image_style .= sinco_set( $logo_dimension, 'width' ) ? ' width:' . sinco_set( $logo_dimension, 'width' ) . ';' : '';
-		$logo_image_style .= sinco_set( $logo_dimension, 'height' ) ? ' height:' . ( sinco_set( $logo_dimension, 'height' ) ) . ';' : '';
-		if ( sinco_set( $image_logo, 'url' ) ) {
-			$logo_output = '<a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'name' ) . '"><img src="' . esc_url( sinco_set( $image_logo, 'url' ) ) . '" alt="'.esc_attr__('logo', 'sinco').'" style="' . $logo_image_style . '" /></a>';
+		$logo_image_style .= DataCraft_set( $logo_dimension, 'width' ) ? ' width:' . DataCraft_set( $logo_dimension, 'width' ) . ';' : '';
+		$logo_image_style .= DataCraft_set( $logo_dimension, 'height' ) ? ' height:' . ( DataCraft_set( $logo_dimension, 'height' ) ) . ';' : '';
+		if ( DataCraft_set( $image_logo, 'url' ) ) {
+			$logo_output = '<a href="' . home_url( '/' ) . '" title="' . get_bloginfo( 'name' ) . '"><img src="' . esc_url( DataCraft_set( $image_logo, 'url' ) ) . '" alt="'.esc_attr__('logo', 'DataCraft').'" style="' . $logo_image_style . '" /></a>';
 		} else {
-			$logo_output = '<a href="' . esc_url(home_url('/')) . '" title="' . get_bloginfo( 'name' ) . '"><img src="' . get_template_directory_uri() . '/assets/images/logo/logo_03.png' . '" alt="'.esc_attr__('logo', 'sinco').'" style="' . $logo_image_style . '" /></a>';
+			$logo_output = '<a href="' . esc_url(home_url('/')) . '" title="' . get_bloginfo( 'name' ) . '"><img src="' . get_template_directory_uri() . '/assets/images/logo/logo_03.png' . '" alt="'.esc_attr__('logo', 'DataCraft').'" style="' . $logo_image_style . '" /></a>';
 		}
 	}
 
@@ -201,18 +201,18 @@ function sinco_logo( $logo_type, $image_logo, $logo_dimension, $logo_text, $logo
 }
 
 /**
- * [sinco_twitter description]
+ * [DataCraft_twitter description]
  *
  * @param  string  $post_type [description].
  * @param  boolean $flip      [description].
  *
  * @return [type]             [description]
  */
-function sinco_twitter( $args = array() ) {
-	$selector = sinco_set( $args, 'selector' );
-	$data     = sinco_set( $args, 'data' );
-	$count    = sinco_set( $args, 'count', 3 );
-	$screen   = sinco_set( $args, 'screen_name', 'WordPress' );
+function DataCraft_twitter( $args = array() ) {
+	$selector = DataCraft_set( $args, 'selector' );
+	$data     = DataCraft_set( $args, 'data' );
+	$count    = DataCraft_set( $args, 'count', 3 );
+	$screen   = DataCraft_set( $args, 'screen_name', 'WordPress' );
 	$settings = array( 'count' => $count, 'screen_name' => $screen );
 	ob_start(); ?>
 	jQuery(document).ready(function ($) {
@@ -224,14 +224,14 @@ function sinco_twitter( $args = array() ) {
 }
 
 /**
- * [sinco_the_pagination description]
+ * [DataCraft_the_pagination description]
  *
  * @param  array   $args [description].
  * @param  integer $echo [description].
  *
  * @return [type]        [description]
  */
-function sinco_the_pagination( $args = array(), $echo = 1 ) {
+function DataCraft_the_pagination( $args = array(), $echo = 1 ) {
 	global $wp_query;
 	$allowed_html = wp_kses_allowed_html( 'post' );
 	$default    = array(
@@ -255,7 +255,7 @@ function sinco_the_pagination( $args = array(), $echo = 1 ) {
 	}
 }
 
-function sinco_the_breadcrumb() {
+function DataCraft_the_breadcrumb() {
 	global $wp_query;
 	$queried_object = get_queried_object();
 	$breadcrumb     = '';
@@ -263,7 +263,7 @@ function sinco_the_breadcrumb() {
 	$before         = '<li class="breadcrumb-item">';
 	$after          = '</li>';
 	if ( ! is_front_page() ) {
-		$breadcrumb .= $before . '<a href="' . home_url( '/' ) . '">' . esc_html__( 'Home', 'sinco' ) . '</a>' . $after;
+		$breadcrumb .= $before . '<a href="' . home_url( '/' ) . '">' . esc_html__( 'Home', 'DataCraft' ) . '</a>' . $after;
 		/** If category or single post */
 		if ( is_category() ) {
 			$cat_obj       = $wp_query->get_queried_object();
@@ -291,7 +291,7 @@ function sinco_the_breadcrumb() {
 		} elseif ( is_singular() ) {
 			if ( $category = wp_get_object_terms( get_the_ID(), array( 'category', 'location', 'tax_feature' ) ) ) {
 				if ( ! is_wp_error( $category ) ) {
-					$breadcrumb .= $before . '<a href="' . get_term_link( sinco_set( $category, '0' ) ) . '">' . sinco_set( sinco_set( $category, '0' ), 'name' ) . '&nbsp;</a>' . $after;
+					$breadcrumb .= $before . '<a href="' . get_term_link( DataCraft_set( $category, '0' ) ) . '">' . DataCraft_set( DataCraft_set( $category, '0' ), 'name' ) . '&nbsp;</a>' . $after;
 					$breadcrumb .= $before . '' . get_the_title() . '' . $after;
 				} else {
 					$breadcrumb .= $before . '' . get_the_title() . '' . $after;
@@ -303,22 +303,22 @@ function sinco_the_breadcrumb() {
 			$breadcrumb .= $before . '<a href="' . get_term_link( $queried_object ) . '">' . single_tag_title( '', false ) . '</a>' . $after;
 		} /**If tag template*/
 		elseif ( is_day() ) {
-			$breadcrumb .= $before . '<a href="#">' . esc_html__( 'Archive for ', 'sinco' ) . get_the_time( 'F jS, Y' ) . '</a>' . $after;
+			$breadcrumb .= $before . '<a href="#">' . esc_html__( 'Archive for ', 'DataCraft' ) . get_the_time( 'F jS, Y' ) . '</a>' . $after;
 		} /** If daily Archives */
 		elseif ( is_month() ) {
-			$breadcrumb .= $before . '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . __( 'Archive for ', 'sinco' ) . get_the_time( 'F, Y' ) . '</a>' . $after;
+			$breadcrumb .= $before . '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . __( 'Archive for ', 'DataCraft' ) . get_the_time( 'F, Y' ) . '</a>' . $after;
 		} /** If montly Archives */
 		elseif ( is_year() ) {
-			$breadcrumb .= $before . '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . __( 'Archive for ', 'sinco' ) . get_the_time( 'Y' ) . '</a>' . $after;
+			$breadcrumb .= $before . '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . __( 'Archive for ', 'DataCraft' ) . get_the_time( 'Y' ) . '</a>' . $after;
 		} /** If year Archives */
 		elseif ( is_author() ) {
-			$breadcrumb .= $before . '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ) . '">' . __( 'Archive for ', 'sinco' ) . get_the_author() . '</a>' . $after;
+			$breadcrumb .= $before . '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ) . '">' . __( 'Archive for ', 'DataCraft' ) . get_the_author() . '</a>' . $after;
 		} /** If author Archives */
 		elseif ( is_search() ) {
-			$breadcrumb .= $before . '' . esc_html__( 'Search Results for ', 'sinco' ) . get_search_query() . '' . $after;
+			$breadcrumb .= $before . '' . esc_html__( 'Search Results for ', 'DataCraft' ) . get_search_query() . '' . $after;
 		} /** if search template */
 		elseif ( is_404() ) {
-			$breadcrumb .= $before . '' . esc_html__( '404 - Not Found', 'sinco' ) . '' . $after;
+			$breadcrumb .= $before . '' . esc_html__( '404 - Not Found', 'DataCraft' ) . '' . $after;
 			/** if search template */
 		} elseif ( is_post_type_archive( 'product' ) ) {
 			$shop_page_id = wc_get_page_id( 'shop' );
@@ -330,7 +330,7 @@ function sinco_the_breadcrumb() {
 					$_name             = $product_post_type->labels->singular_name;
 				}
 				if ( is_search() ) {
-					$breadcrumb .= $before . '<a href="' . get_post_type_archive_link( 'product' ) . '">' . $_name . '</a>' . $delimiter . esc_html__( 'Search results for &ldquo;', 'sinco' ) . get_search_query() . '&rdquo;' . $after;
+					$breadcrumb .= $before . '<a href="' . get_post_type_archive_link( 'product' ) . '">' . $_name . '</a>' . $delimiter . esc_html__( 'Search results for &ldquo;', 'DataCraft' ) . get_search_query() . '&rdquo;' . $after;
 				} elseif ( is_paged() ) {
 					$breadcrumb .= $before . '<a href="' . get_post_type_archive_link( 'product' ) . '">' . $_name . '</a>' . $after;
 				} else {
@@ -346,7 +346,7 @@ function sinco_the_breadcrumb() {
 	return $breadcrumb;
 }
 
-function sinco_the_title( $template ) {
+function DataCraft_the_title( $template ) {
 	global $wp_query;
 	$queried_object = get_queried_object();
 	$title          = '';
@@ -356,24 +356,24 @@ function sinco_the_title( $template ) {
 		$this_category = get_category( $current_obj->term_id );
 		$title         .= $current_obj->name;
 	} elseif ( is_home() ) {
-		$title .= esc_html__( 'Home Page ', 'sinco' );
+		$title .= esc_html__( 'Home Page ', 'DataCraft' );
 	} elseif ( $template == 'page' || $template == 'post' || $template == 'VC' || $template == 'blog' || $template == 'courseDetail' || $template == 'team' || $template == 'services' || $template == 'events' || $template == 'gallery' || $template == 'shop' || $template == 'product' ) {
 		$title .= get_the_title();
 	} elseif ( $template == 'archive' ) {
-		$title .= esc_html__( 'Archive for ', 'sinco' ) . get_the_time( 'F jS, Y' );
+		$title .= esc_html__( 'Archive for ', 'DataCraft' ) . get_the_time( 'F jS, Y' );
 	} elseif ( $template == 'author' ) {
-		$title .= esc_html__( 'Archive for ', 'sinco' ) . get_the_author();
+		$title .= esc_html__( 'Archive for ', 'DataCraft' ) . get_the_author();
 	} elseif ( $template == 'search' ) {
-		$title .= esc_html__( 'Search Results for ', 'sinco' ) . '"' . get_search_query() . '"';
+		$title .= esc_html__( 'Search Results for ', 'DataCraft' ) . '"' . get_search_query() . '"';
 	} elseif ( $template == '404' ) {
-		$title .= esc_html__( '404 Page Not Found', 'sinco' );
+		$title .= esc_html__( '404 Page Not Found', 'DataCraft' );
 	}
 
 	return $title;
 }
 
 /**
- * [sinco_list_comments description]
+ * [DataCraft_list_comments description]
  *
  * @param  [type] $comment [description].
  * @param  [type] $args    [description].
@@ -381,13 +381,13 @@ function sinco_the_title( $template ) {
  *
  * @return void          [description]
  */
-function sinco_list_comments( $comment, $args, $depth ) {
+function DataCraft_list_comments( $comment, $args, $depth ) {
 	$allowed_html = wp_kses_allowed_html( 'post' );
 
 	wp_enqueue_script( 'comment-reply' );
 	$GLOBALS['comment'] = $comment;
 	$like               = (int) get_comment_meta( $comment->comment_ID, 'like_it', true ); ?>
-	<div class="sinco-comment-item">
+	<div class="DataCraft-comment-item">
         <div class="single-comment clearfix">
            <div <?php comment_class('comment');?> id="comment-<?php comment_ID(); ?>"> 
                 <?php if ( get_avatar( $comment ) ) : ?>
@@ -404,7 +404,7 @@ function sinco_list_comments( $comment, $args, $depth ) {
 					<?php $myclass = 'reply-btn';
                         echo preg_replace( '/comment-reply-link/', 'comment-reply-link ' . $myclass, get_comment_reply_link( array_merge( $args, array(
                             'depth'      => $depth,
-                            'reply_text' => '' . esc_html( 'Reply', 'sinco' ).'',
+                            'reply_text' => '' . esc_html( 'Reply', 'DataCraft' ).'',
                             'max_depth'  => $args['max_depth'],
                         ) ) ), 10 );
                     ?>
@@ -424,7 +424,7 @@ function sinco_list_comments( $comment, $args, $depth ) {
  *
  * @return void          [description]
  */
-function sinco_comment_form( $args = array(), $post_id = null ) {
+function DataCraft_comment_form( $args = array(), $post_id = null ) {
 	if ( null === $post_id ) {
 		$post_id = get_the_ID();
 	}
@@ -444,13 +444,13 @@ function sinco_comment_form( $args = array(), $post_id = null ) {
 	$fields              = array(
 		'author' => '
 		<div class="input-wrapper mb-15 col-md-6 col-sm-6 col-xs-12">
-		<input id="author" name="author"  placeholder="' . esc_attr__( 'Rashed Kabir', 'sinco' ) . '" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' />
+		<input id="author" name="author"  placeholder="' . esc_attr__( 'Rashed Kabir', 'DataCraft' ) . '" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' />
 		</div>',
 		'email'  => '<div class="input-wrapper mb-15 col-md-6 col-sm-6 col-xs-12">
-		<input id="email" placeholder="' . esc_attr__( 'rshdkabir@gmail.com', 'sinco' ) . '" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" maxlength="100"/></div>',
+		<input id="email" placeholder="' . esc_attr__( 'rshdkabir@gmail.com', 'DataCraft' ) . '" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" maxlength="100"/></div>',
 		
 	);
-	$required_text       = sprintf( ' ' . esc_html__( '%s', 'sinco' ), '' );
+	$required_text       = sprintf( ' ' . esc_html__( '%s', 'DataCraft' ), '' );
 	/**
 	 * Filters the default comment form fields.
 	 *
@@ -461,20 +461,20 @@ function sinco_comment_form( $args = array(), $post_id = null ) {
 	$fields   = apply_filters( 'comment_form_default_fields', $fields );
 	$defaults = array(
 		'fields'               => $fields,
-		'comment_field'        => '<div class="input-wrapper mb-15 col-md-12 col-sm-12 col-xs-12"><textarea  placeholder="' . esc_attr__( 'Your Comment', 'sinco' ) . '"  id="comment" name="comment" class="form-control" rows="7"  required="required"></textarea></div>',
+		'comment_field'        => '<div class="input-wrapper mb-15 col-md-12 col-sm-12 col-xs-12"><textarea  placeholder="' . esc_attr__( 'Your Comment', 'DataCraft' ) . '"  id="comment" name="comment" class="form-control" rows="7"  required="required"></textarea></div>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'must_log_in'          => '<div class="col-sm-12 col-xs-12"><p class="must-log-in">' . sprintf(
 			/* translators: %s: login URL */
-				esc_html__( 'You must be <a href="%s">logged in</a> to post a comment.', 'sinco' ),
+				esc_html__( 'You must be <a href="%s">logged in</a> to post a comment.', 'DataCraft' ),
 				wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) )
 			) . '</p></div>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'logged_in_as'         => '<p class="col-sm-12 col-xs-12 logged-in-as">' . sprintf(
 			/* translators: 1: edit user link, 2: accessibility text, 3: user name, 4: logout URL */
-				'<a href="%1$s" aria-label="%2$s">' . esc_html__( 'Logged in as', 'sinco' ) . ' %3$s</a>. <a href="%4$s">' . esc_html__( 'Log out?', 'sinco' ) . '</a>',
+				'<a href="%1$s" aria-label="%2$s">' . esc_html__( 'Logged in as', 'DataCraft' ) . ' %3$s</a>. <a href="%4$s">' . esc_html__( 'Log out?', 'DataCraft' ) . '</a>',
 				get_edit_user_link(),
 				/* translators: %s: user name */
-				esc_attr( sprintf( esc_html__( 'Logged in as %s. Edit your profile.', 'sinco' ), $user_identity ) ),
+				esc_attr( sprintf( esc_html__( 'Logged in as %s. Edit your profile.', 'DataCraft' ), $user_identity ) ),
 				$user_identity,
 				wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) )
 			) . '</p>',
@@ -486,14 +486,14 @@ function sinco_comment_form( $args = array(), $post_id = null ) {
 		'class_form'           => '',
 		'class_submit'         => 'submit',
 		'name_submit'          => 'submit',
-		'title_reply'          => esc_html__( 'Leave A Comment', 'sinco' ),
-		'title_reply_to'       => esc_html__( 'Leave a Reply to %s', 'sinco' ),
+		'title_reply'          => esc_html__( 'Leave A Comment', 'DataCraft' ),
+		'title_reply_to'       => esc_html__( 'Leave a Reply to %s', 'DataCraft' ),
 		'title_reply_before'   => '<h5 class="blog-inner-title">',
 		'title_reply_after'    => '</h5>',
 		'cancel_reply_before'  => ' <small>',
 		'cancel_reply_after'   => '</small>',
-		'cancel_reply_link'    => esc_html__( 'Cancel reply', 'sinco' ),
-		'label_submit'         => esc_html__( 'Leave a Comment', 'sinco' ),
+		'cancel_reply_link'    => esc_html__( 'Cancel reply', 'DataCraft' ),
+		'label_submit'         => esc_html__( 'Leave a Comment', 'DataCraft' ),
 		'submit_button'        => '<div class="col-md-12"><button name="%1$s" type="submit" id="%2$s" class="btn-eight ripple-btn" value="%4$s"><span class="round"></span><span class="txt">Post Comment</span></button></div>',
 		'submit_field'         => '<div class="btn-send">%1$s %2$s</div>',
 		'format'               => 'xhtml',
@@ -684,12 +684,12 @@ function sinco_comment_form( $args = array(), $post_id = null ) {
 	endif;
 }
 
-if( ! function_exists('sinco_filesystem') ) {
+if( ! function_exists('DataCraft_filesystem') ) {
 	/**
 	 * [fixkar_filesystem description]
 	 * @return [type] [description]
 	 */
-	function sinco_filesystem() {
+	function DataCraft_filesystem() {
 		if( ! function_exists('require_filesystem_credentials')) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 		}
@@ -711,31 +711,31 @@ if( ! function_exists('sinco_filesystem') ) {
 }
 
 
-if( ! function_exists('sinco_get_server') ) {
+if( ! function_exists('DataCraft_get_server') ) {
 
-	function sinco_get_server($key = '', $value = '') {
-		if( function_exists('sinco_server') ) {
-			return sinco_server($key, $value);
+	function DataCraft_get_server($key = '', $value = '') {
+		if( function_exists('DataCraft_server') ) {
+			return DataCraft_server($key, $value);
 		}
 
 		return [];
 	}
 }
 
-function sinco_body_classes( $classes ) {
+function DataCraft_body_classes( $classes ) {
     $classes[] = 'menu-layer';
       
     return $classes;
 }
-add_filter( 'body_class','sinco_body_classes' );
+add_filter( 'body_class','DataCraft_body_classes' );
 
-function sinco_custom_fonts_load( $custom_font ) {
+function DataCraft_custom_fonts_load( $custom_font ) {
 
     $custom_style = '';
     
     $pathinfo = pathinfo($custom_font);
     
-    if ( $filename = sinco_set( $pathinfo, 'filename' ) ) {
+    if ( $filename = DataCraft_set( $pathinfo, 'filename' ) ) {
         $custom_style .= '@font-face{
             font-family:"'.$filename.'";';
             $extensions = array( 'eot', 'woff', 'woff2', 'ttf', 'svg' );
@@ -771,12 +771,12 @@ function sinco_custom_fonts_load( $custom_font ) {
  *
  * @since 0.0.1
  */
-if( ! function_exists('sinco_el_flat_icon') ) {
-	function sinco_el_flat_icon($args) {
+if( ! function_exists('DataCraft_el_flat_icon') ) {
+	function DataCraft_el_flat_icon($args) {
 
 		$args['flat-icon'] =  [
 			'name' 			=> 'flat-icon',
-			'label' 		=> esc_html__( 'Flaticons', 'sinco' ),
+			'label' 		=> esc_html__( 'Flaticons', 'DataCraft' ),
 			'url' 			=> get_template_directory_uri() . '/assets/css/flaticon.css',
 			'enqueue' 		=> [ get_template_directory_uri() . '/assets/css/flaticon.css' ],
 			'prefix' 		=> 'flaticon-',
@@ -788,7 +788,7 @@ if( ! function_exists('sinco_el_flat_icon') ) {
 		];
 		$args['icomoon'] =  [
 			'name' 			=> 'icomoon',
-			'label' 		=> esc_html__( 'Icomoon', 'sinco' ),
+			'label' 		=> esc_html__( 'Icomoon', 'DataCraft' ),
 			'url' 			=> get_template_directory_uri() . '/assets/css/icomoon.css',
 			'enqueue' 		=> [ get_template_directory_uri() . '/assets/css/icomoon.css' ],
 			'prefix' 		=> 'icon-',
@@ -801,9 +801,9 @@ if( ! function_exists('sinco_el_flat_icon') ) {
 		return $args;
 	}
 }
-add_filter( 'elementor/icons_manager/native', 'sinco_el_flat_icon' );
+add_filter( 'elementor/icons_manager/native', 'DataCraft_el_flat_icon' );
 
-function sinco_trim( $text, $len, $more = null )
+function DataCraft_trim( $text, $len, $more = null )
 	{
 		$text = strip_shortcodes( $text );
 		$text = apply_filters( 'the_content', $text );

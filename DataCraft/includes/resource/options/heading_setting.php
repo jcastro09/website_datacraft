@@ -2,7 +2,7 @@
 
 return array(
 
-    'title'         => esc_html__( 'Heading Settings', 'sinco' ),
+    'title'         => esc_html__( 'Heading Settings', 'DataCraft' ),
     'id'            => 'heading_setting',
     'desc'          => '',
     'subsection'    => true,
@@ -14,9 +14,9 @@ return array(
 
             'type' => 'switch',
 
-            'title' => esc_html__('Use H1 Custom Font', 'sinco'),
+            'title' => esc_html__('Use H1 Custom Font', 'DataCraft'),
 
-            'desc' => esc_html__('Enable to customize the theme heading h1 tag font', 'sinco'),
+            'desc' => esc_html__('Enable to customize the theme heading h1 tag font', 'DataCraft'),
 
             ),
 
@@ -26,7 +26,7 @@ return array(
 
             'type' => 'typography',
 
-            'title' => esc_html__('H1 Font Typography', 'sinco'),
+            'title' => esc_html__('H1 Font Typography', 'DataCraft'),
 
             'google' => true,
 
@@ -36,7 +36,7 @@ return array(
 
             'units' => 'px',
 
-            'subtitle' => esc_html__('Apply options to customize the h1 heading font for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the h1 heading font for the theme', 'DataCraft'),
 
             'default' => array(
 
@@ -64,9 +64,9 @@ return array(
 
             'type' => 'switch',
 
-            'title' => esc_html__('Use H2 Custom Font', 'sinco'),
+            'title' => esc_html__('Use H2 Custom Font', 'DataCraft'),
 
-            'desc' => esc_html__('Enable to customize the theme heading h2 tag font', 'sinco'),
+            'desc' => esc_html__('Enable to customize the theme heading h2 tag font', 'DataCraft'),
 
             ),
 
@@ -76,17 +76,17 @@ return array(
 
             'type' => 'typography',
 
-            'title' => esc_html__('H2 Font Typography', 'sinco'),
+            'title' => esc_html__('H2 Font Typography', 'DataCraft'),
 
             'google' => true,
 
             'font-backup' => true,
 
-            'output' => array('h2', '.rep-meta > h2', '.service-meta > h2', '.counter-meta > h2 ', '.price-table h2', '.service-box > h2', '.whyus-meta > h2', '.touch-form > h2', '.category-box > h2', '.hover-meta > h2', '.exprt-meta > h2', '.top-meta > h2', '.blog-detail-meta > h2', '.banner-meta > h2 ', '.banner-info > h2', '.tutorial-meta > h2', '.complete-contact > h2', '.sinco .blog-detail-meta > h2', '.our-process > h2', '.video-meta .tutorial-meta > h2', '.rep-meta > h2 ', '.service-meta > h2' ),
+            'output' => array('h2', '.rep-meta > h2', '.service-meta > h2', '.counter-meta > h2 ', '.price-table h2', '.service-box > h2', '.whyus-meta > h2', '.touch-form > h2', '.category-box > h2', '.hover-meta > h2', '.exprt-meta > h2', '.top-meta > h2', '.blog-detail-meta > h2', '.banner-meta > h2 ', '.banner-info > h2', '.tutorial-meta > h2', '.complete-contact > h2', '.DataCraft .blog-detail-meta > h2', '.our-process > h2', '.video-meta .tutorial-meta > h2', '.rep-meta > h2 ', '.service-meta > h2' ),
 
             'units' => 'px',
 
-            'subtitle' => esc_html__('Apply options to customize the h2 heading font for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the h2 heading font for the theme', 'DataCraft'),
 
             'default' => array(
 
@@ -115,9 +115,9 @@ return array(
 
             'type' => 'switch',
 
-            'title' => esc_html__('Use H3 Custom Font', 'sinco'),
+            'title' => esc_html__('Use H3 Custom Font', 'DataCraft'),
 
-            'desc' => esc_html__('Enable to customize the theme heading h3 tag font', 'sinco'),
+            'desc' => esc_html__('Enable to customize the theme heading h3 tag font', 'DataCraft'),
 
             ),
 
@@ -127,7 +127,7 @@ return array(
 
             'type' => 'typography',
 
-            'title' => esc_html__('H3 Font Typography', 'sinco'),
+            'title' => esc_html__('H3 Font Typography', 'DataCraft'),
 
             'google' => true,
 
@@ -137,7 +137,7 @@ return array(
 
             'units' => 'px',
 
-            'subtitle' => esc_html__('Apply options to customize the h3 heading  for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the h3 heading  for the theme', 'DataCraft'),
 
             'default' => array(
 
@@ -166,9 +166,9 @@ return array(
 
             'type' => 'switch',
 
-            'title' => esc_html__('Use H4 Custom Font', 'sinco'),
+            'title' => esc_html__('Use H4 Custom Font', 'DataCraft'),
 
-            'desc' => esc_html__('Enable to customize the theme heading h4 tag font', 'sinco'),
+            'desc' => esc_html__('Enable to customize the theme heading h4 tag font', 'DataCraft'),
 
             ),
 
@@ -178,7 +178,7 @@ return array(
 
             'type' => 'typography',
 
-            'title' => esc_html__('H4 Font Typography', 'sinco'),
+            'title' => esc_html__('H4 Font Typography', 'DataCraft'),
 
             'google' => true,
 
@@ -188,7 +188,7 @@ return array(
 
             'units' => 'px',
 
-            'subtitle' => esc_html__('Apply options to customize the h4 heading font for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the h4 heading font for the theme', 'DataCraft'),
 
             'default' => array(
 
@@ -217,9 +217,9 @@ return array(
 
             'type' => 'switch',
 
-            'title' => esc_html__('Use H5 Custom Font', 'sinco'),
+            'title' => esc_html__('Use H5 Custom Font', 'DataCraft'),
 
-            'desc' => esc_html__('Enable to customize the theme heading h5 tag font', 'sinco'),
+            'desc' => esc_html__('Enable to customize the theme heading h5 tag font', 'DataCraft'),
 
             ),
 
@@ -229,7 +229,7 @@ return array(
 
             'type' => 'typography',
 
-            'title' => esc_html__('H5 Font Typography', 'sinco'),
+            'title' => esc_html__('H5 Font Typography', 'DataCraft'),
 
             'google' => true,
 
@@ -239,7 +239,7 @@ return array(
 
             'units' => 'px',
 
-            'subtitle' => esc_html__('Apply options to customize the h5 heading font for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the h5 heading font for the theme', 'DataCraft'),
 
             'default' => array(
 
@@ -268,9 +268,9 @@ return array(
 
             'type' => 'switch',
 
-            'title' => esc_html__('Use H6 Custom Font', 'sinco'),
+            'title' => esc_html__('Use H6 Custom Font', 'DataCraft'),
 
-            'desc' => esc_html__('Enable to customize the theme heading h6 tag font', 'sinco'),
+            'desc' => esc_html__('Enable to customize the theme heading h6 tag font', 'DataCraft'),
 
             ),
 
@@ -280,7 +280,7 @@ return array(
 
             'type' => 'typography',
 
-            'title' => esc_html__('H6 Font Typography', 'sinco'),
+            'title' => esc_html__('H6 Font Typography', 'DataCraft'),
 
             'google' => true,
 
@@ -290,7 +290,7 @@ return array(
 
             'units' => 'px',
 
-            'subtitle' => esc_html__('Apply options to customize the h6 heading font for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the h6 heading font for the theme', 'DataCraft'),
 
             'default' => array(
 

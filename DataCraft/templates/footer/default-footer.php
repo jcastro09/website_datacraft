@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 $allowed_html = wp_kses_allowed_html( 'post' );
 
 ?>
@@ -56,7 +56,7 @@ $allowed_html = wp_kses_allowed_html( 'post' );
                         </ul>
                         <?php } ?>
                         <?php if($options->get( 'footer_v1_copyright_text' )){?>
-                        <p class="copyright text-center order-lg-0 pb-15"><?php echo wp_kses( $options->get( 'footer_v1_copyright_text', 'Copyright @ 2022 sinco inc.' ), true ); ?></p>
+                        <p class="copyright text-center order-lg-0 pb-15"><?php echo wp_kses( $options->get( 'footer_v1_copyright_text', 'Copyright @ 2022 DataCraft inc.' ), true ); ?></p>
                         <?php } ?>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 return array(
 
-	'title'         => esc_html__( 'Language Settings', 'sinco' ),
+	'title'         => esc_html__( 'Language Settings', 'DataCraft' ),
     'id'            => 'language_settings',
     'desc'          => '',
     'icon'			=> 'el el-globe',
@@ -10,7 +10,7 @@ return array(
 		array(
 			'id' => 'optLanguage',
 			'type' => 'language',
-			'desc' => esc_html__('Please upload .mo language file', 'sinco'),
+			'desc' => esc_html__('Please upload .mo language file', 'DataCraft'),
 			)
 	),
 );

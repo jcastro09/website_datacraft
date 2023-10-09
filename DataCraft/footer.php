@@ -12,7 +12,7 @@ $page_id = ( $wp_query->is_posts_page ) ? $wp_query->queried_object->ID : get_th
 
 	<div class="clearfix"></div>
 
-	<?php sinco_template_load( 'templates/footer/footer.php', compact( 'page_id' ) );?>
+	<?php DataCraft_template_load( 'templates/footer/footer.php', compact( 'page_id' ) );?>
 
 	<button class="scroll-top">
         <i class="bi bi-arrow-up-short"></i>

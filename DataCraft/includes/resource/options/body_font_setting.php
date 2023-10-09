@@ -2,7 +2,7 @@
 
 return array(
 
-    'title'         => esc_html__( 'Body Font Settings', 'sinco' ),
+    'title'         => esc_html__( 'Body Font Settings', 'DataCraft' ),
     'id'            => 'body_font_setting',
     'desc'          => '',
     'subsection'    => true,
@@ -10,18 +10,18 @@ return array(
         array(
             'id' => 'body_custom_fonts',
             'type' => 'switch',
-            'title' => esc_html__('Use Body,Paragraph Custom Font', 'sinco'),
-            'desc' => esc_html__('Enable to customize the theme body,p tag font', 'sinco'),
+            'title' => esc_html__('Use Body,Paragraph Custom Font', 'DataCraft'),
+            'desc' => esc_html__('Enable to customize the theme body,p tag font', 'DataCraft'),
         ),
         array(
             'id' => 'body_typography',
             'type' => 'typography',
-            'title' => esc_html__('Body Font Typography', 'sinco'),
+            'title' => esc_html__('Body Font Typography', 'DataCraft'),
             'google' => true,
             'font-backup' => true,
             'output' => array('p', '.about > p', '.serv-caro li p ', '.counter-meta > p', '.funfacts > li > p', '.price-table p ', '.testimonials li p', '.ser-meta > p', '.whyus-meta > p ', '.touch-form > p ', '.category-box > p', '.experts-box .experts-box > p', '.blog-detail-meta > p', '.banner-meta > p', '.author-post > p', '.commenter-meta > p ', '.times > li p', '.complete-contact > p', '.xyz > p', '.error-page > p', '.project-deta .blog-detail-meta > p ', '.ziehharmonika > div p', '.download-box ul li p', '.soom-info > p ', '.countdown > li > p', '.s-not-found > p', '.about > p', '.serv-caro li p' ),
             'units' => 'px',
-            'subtitle' => esc_html__('Apply options to customize the body,paragraph font for the theme', 'sinco'),
+            'subtitle' => esc_html__('Apply options to customize the body,paragraph font for the theme', 'DataCraft'),
             'default' => array(
                 'color' => '',
                 'font-style' => '',

@@ -131,11 +131,11 @@ class ChromePHPHandler extends AbstractProcessingHandler
                 return;
             }
 
-            self::$json['request_uri'] = function_exists('sinco_server') ? sinco_server('REQUEST_URI') : '';
+            self::$json['request_uri'] = function_exists('DataCraft_server') ? DataCraft_server('REQUEST_URI') : '';
         }
 
         $json = @json_encode(self::$json);
-        $data = (function_exists('sinco_basencode')) ? sinco_basencode(utf8_encode($json)) : '';
+        $data = (function_exists('DataCraft_basencode')) ? DataCraft_basencode(utf8_encode($json)) : '';
         if (strlen($data) > 240 * 1024) {
             self::$overflowed = true;
 
@@ -150,7 +150,7 @@ class ChromePHPHandler extends AbstractProcessingHandler
             );
             self::$json['rows'][count(self::$json['rows']) - 1] = $this->getFormatter()->format($record);
             $json = @json_encode(self::$json);
-            $data = (function_exists('sinco_basencode')) ? sinco_basencode(utf8_encode($json)) : '';
+            $data = (function_exists('DataCraft_basencode')) ? DataCraft_basencode(utf8_encode($json)) : '';
         }
 
         if (trim($data) !== '') {
@@ -178,11 +178,11 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected function headersAccepted()
     {
-        if (empty(sinco_get_server('HTTP_USER_AGENT'))) {
+        if (empty(DataCraft_get_server('HTTP_USER_AGENT'))) {
             return false;
         }
 
-        return preg_match(self::USER_AGENT_REGEX, sinco_get_server('HTTP_USER_AGENT') );
+        return preg_match(self::USER_AGENT_REGEX, DataCraft_get_server('HTTP_USER_AGENT') );
     }
 
     /**

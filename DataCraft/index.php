@@ -9,7 +9,7 @@
 
 get_header();
 global $wp_query;
-$data  = \SINCO\Includes\Classes\Common::instance()->data( 'blog' )->get();
+$data  = \DataCraft\Includes\Classes\Common::instance()->data( 'blog' )->get();
 $layout = $data->get( 'layout' );
 $sidebar = $data->get( 'sidebar' );
 $layout = ( $layout ) ? $layout : 'right';
@@ -22,14 +22,14 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
 ?>
 	
     <?php if ( class_exists( '\Elementor\Plugin' )):?>
-    	<?php do_action( 'sinco_banner', $data );?>
+    	<?php do_action( 'DataCraft_banner', $data );?>
     <?php else:?>
     <!--Start breadcrumb area paroller-->     
     <div class="theme-inner-banner">
         <div class="container">
             <h2 class="intro-title text-center"><?php if( $data->get( 'title' ) ) echo wp_kses( $data->get( 'title' ), true ); else( wp_title( '' ) ); ?></h2>
             <ul class="page-breadcrumb style-none d-flex justify-content-center">
-                <?php echo sinco_the_breadcrumb(); ?>
+                <?php echo DataCraft_the_breadcrumb(); ?>
             </ul>
         </div>
         <img src="<?php echo esc_url(get_template_directory_uri());?>/assets/images/shape/shape_38.svg" alt="" class="shapes shape-one">
@@ -46,7 +46,7 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
                     <div class="row">
                         <?php
                             if ( $data->get( 'layout' ) == 'left' ) {
-                                do_action( 'sinco_sidebar', $data );
+                                do_action( 'DataCraft_sidebar', $data );
                             }
                         ?>
                         <div class="content-side <?php echo esc_attr( $class ); ?>">
@@ -54,7 +54,7 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
                                 <?php
                                     while ( have_posts() ) :
                                         the_post();
-                                        sinco_template_load( 'templates/blog/blog.php', compact( 'data' ) );
+                                        DataCraft_template_load( 'templates/blog/blog.php', compact( 'data' ) );
                                     endwhile;
                                     wp_reset_postdata();
                                 ?>
@@ -63,13 +63,13 @@ if ( class_exists( '\Elementor\Plugin' ) AND $data->get( 'tpl-type' ) == 'e' AND
                             <!--Pagination--> 
                             <div class="page-pagination-one pt-90">
                                 <div class="d-flex align-items-center style-none">
-                                    <?php sinco_the_pagination( $wp_query->max_num_pages );?>
+                                    <?php DataCraft_the_pagination( $wp_query->max_num_pages );?>
                                 </div>
                             </div>
                 		</div>
                         <?php
                             if ( $data->get( 'layout' ) == 'right' ) {
-                                do_action( 'sinco_sidebar', $data );
+                                do_action( 'DataCraft_sidebar', $data );
                             }
                         ?>
                     </div>

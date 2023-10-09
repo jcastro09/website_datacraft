@@ -1,6 +1,6 @@
 <?php
 
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
 
 /**
@@ -15,7 +15,7 @@ class Options {
 	 *
 	 * @var string
 	 */
-	private $opt_name = 'sinco' . '_options';
+	private $opt_name = 'DataCraft' . '_options';
 
 	private $menu_title = '';
 
@@ -23,7 +23,7 @@ class Options {
 
 	private $menu_type = 'submenu';
 
-	private $page_slug = 'sinco' . '_options';
+	private $page_slug = 'DataCraft' . '_options';
 
 	private $customizer = true;
 
@@ -44,8 +44,8 @@ class Options {
 		}
 
 		$this->opt_name   = apply_filters( 'redux_demo/opt_name', $this->opt_name );
-		$this->menu_title = esc_html__( 'SINCO Options', 'sinco' );
-		$this->page_title = esc_html__( 'SINCO Options', 'sinco' );
+		$this->menu_title = esc_html__( 'DataCraft Options', 'DataCraft' );
+		$this->page_title = esc_html__( 'DataCraft Options', 'DataCraft' );
 
 		$this->args();
 
@@ -105,7 +105,7 @@ class Options {
 			/*Choose an icon for the admin bar menu*/
 			'admin_bar_priority'   => 50,
 			/*Choose an priority for the admin bar menu*/
-			'global_variable'      => 'sinco_options',
+			'global_variable'      => 'DataCraft_options',
 			/*Set a different name for your global variable other than the opt_name*/
 			'dev_mode'             => false,
 			/*Show the time the page took to load, etc*/
@@ -236,19 +236,19 @@ class Options {
 		$tabs = array(
 			array(
 				'id'      => 'redux-help-tab-1',
-				'title'   => esc_html__( 'Theme Information 1', 'sinco' ),
-				'content' => esc_html__( '<p>This is the tab content, HTML is allowed.</p>', 'sinco' ),
+				'title'   => esc_html__( 'Theme Information 1', 'DataCraft' ),
+				'content' => esc_html__( '<p>This is the tab content, HTML is allowed.</p>', 'DataCraft' ),
 			),
 			array(
 				'id'      => 'redux-help-tab-2',
-				'title'   => esc_html__( 'Theme Information 2', 'sinco' ),
-				'content' => esc_html__( '<p>This is the tab content, HTML is allowed.</p>', 'sinco' ),
+				'title'   => esc_html__( 'Theme Information 2', 'DataCraft' ),
+				'content' => esc_html__( '<p>This is the tab content, HTML is allowed.</p>', 'DataCraft' ),
 			),
 		);
 		Redux::setHelpTab( $opt_name, $tabs );
 
 		// Set the help sidebar
-		$content = '<p>' . esc_html__( 'This is the sidebar content, HTML is allowed.', 'sinco' ) . '</p>';
+		$content = '<p>' . esc_html__( 'This is the sidebar content, HTML is allowed.', 'DataCraft' ) . '</p>';
 		Redux::setHelpSidebar( $opt_name, $content );
 	}
 
@@ -286,7 +286,7 @@ class Options {
 			$sections_path[ $sec ] = get_template_directory() . '/includes/resource/options/' . $sec . '.php';
 		}
 
-		$sections_path = apply_filters( 'sinco_redux_sections', $sections_path );
+		$sections_path = apply_filters( 'DataCraft_redux_sections', $sections_path );
 
 		$count = 1;
 
@@ -298,7 +298,7 @@ class Options {
 
 				$options['priority'] = $count;
 
-				$options = apply_filters( "sinco_redux_sections_{$key}", $options );
+				$options = apply_filters( "DataCraft_redux_sections_{$key}", $options );
 
 				\Redux::setSection( $this->opt_name, $options );
 			}

@@ -21,7 +21,7 @@
  *
  * @return array of arguments to update the sidebars_widgets option.
  */
-function sinco_unset_default_widgets_args( $widget_areas ) {
+function DataCraft_unset_default_widgets_args( $widget_areas ) {
 
 	$widget_areas = array(
 		'default-sidebar' => array(),
@@ -30,7 +30,7 @@ function sinco_unset_default_widgets_args( $widget_areas ) {
 	return $widget_areas;
 }
 
-add_filter( 'merlin_unset_default_widgets_args', 'sinco_unset_default_widgets_args' );
+add_filter( 'merlin_unset_default_widgets_args', 'DataCraft_unset_default_widgets_args' );
 
 /**
  * Custom content for the generated child theme's functions.php file.
@@ -38,7 +38,7 @@ add_filter( 'merlin_unset_default_widgets_args', 'sinco_unset_default_widgets_ar
  * @param string $output Generated content.
  * @param string $slug   Parent theme slug.
  */
-function sinco_child_functions_php( $output, $slug ) {
+function DataCraft_child_functions_php( $output, $slug ) {
 
 	$slug_no_hyphens = strtolower( preg_replace( '#[^a-zA-Z]#', '', $slug ) );
 
@@ -72,7 +72,7 @@ function sinco_child_functions_php( $output, $slug ) {
 	return $output;
 }
 
-add_filter( 'merlin_generate_child_functions_php', 'sinco_child_functions_php', 10, 2 );
+add_filter( 'merlin_generate_child_functions_php', 'DataCraft_child_functions_php', 10, 2 );
 
 /**
  * Define the demo import files (local files).
@@ -83,32 +83,32 @@ add_filter( 'merlin_generate_child_functions_php', 'sinco_child_functions_php', 
  * please use the below code.
  * Note: make sure your import files are readable!
  */
-function sinco_local_import_files() {
+function DataCraft_local_import_files() {
 	return array(
 		array(
-			'import_file_name'         => esc_html__('Main Demo', 'sinco'),
+			'import_file_name'         => esc_html__('Main Demo', 'DataCraft'),
 			'local_import_widget_file' => trailingslashit( get_template_directory() ) . 'demo-import/content/widgets.json',
 			//'import_rev_slider_file_url'      => trailingslashit( get_template_directory_uri() ) . 'demo-import/content/home.zip',
 			'local_import_redux'       => array(
 				array(
 					'file_path'   => trailingslashit( get_template_directory() ) . 'demo-import/content/redux_options.json',
-					'option_name' => 'sinco_options',
+					'option_name' => 'DataCraft_options',
 				),
 			),
 			'local_import_file'        => trailingslashit( get_template_directory() ) . 'demo-import/content/content.xml',
 			'import_preview_image_url' => get_template_directory_uri() . '/screenshot.png',
-			'import_notice'            => esc_html__( 'After you import this demo, you will have to setup the slider separately.', 'sinco' ),
-			'preview_url'              => 'https://fastwpdemo.com/newwp/sinco/',
+			'import_notice'            => esc_html__( 'After you import this demo, you will have to setup the slider separately.', 'DataCraft' ),
+			'preview_url'              => 'https://fastwpdemo.com/newwp/DataCraft/',
 		),
 	);
 }
 
-add_filter( 'merlin_import_files', 'sinco_local_import_files' );
+add_filter( 'merlin_import_files', 'DataCraft_local_import_files' );
 
 /**
  * Execute custom code after the whole import has finished.
  */
-function sinco_after_import_setup() {
+function DataCraft_after_import_setup() {
 	// Assign menus to their locations.
 	$main_menu = get_term_by( 'name', 'Main Menu', 'nav_menu' );
 	$onepage_menu = get_term_by( 'name', 'Main Menu', 'nav_menu' );
@@ -160,4 +160,4 @@ function sinco_after_import_setup() {
 	}*/
 }
 
-add_action( 'merlin_after_all_import', 'sinco_after_import_setup' );
+add_action( 'merlin_after_all_import', 'DataCraft_after_import_setup' );

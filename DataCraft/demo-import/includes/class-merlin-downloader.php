@@ -40,13 +40,13 @@ class Merlin_Downloader {
 			return $content;
 		}
 
-		$saved_file = sinco_filesystem()->put_contents( $this->download_directory_path . $filename, $content );
+		$saved_file = DataCraft_filesystem()->put_contents( $this->download_directory_path . $filename, $content );
 		
 		if ( ! empty( $saved_file ) ) {
 			return $this->download_directory_path . $filename;
 		}
 
-		Merlin_Logger::get_instance()->error( __( 'The file was not able to save to disk, while trying to download it', 'sinco' ), array( 'url' => $url, 'filename' => $filename ) );
+		Merlin_Logger::get_instance()->error( __( 'The file was not able to save to disk, while trying to download it', 'DataCraft' ), array( 'url' => $url, 'filename' => $filename ) );
 
 		return false;
 	}
@@ -63,7 +63,7 @@ class Merlin_Downloader {
 		if ( empty( $url ) ) {
 			return new \WP_Error(
 				'missing_url',
-				__( 'Missing URL for downloading a file!', 'sinco' )
+				__( 'Missing URL for downloading a file!', 'DataCraft' )
 			);
 		}
 
@@ -81,7 +81,7 @@ class Merlin_Downloader {
 			return new \WP_Error(
 				'download_error',
 				sprintf(
-					__( 'An error occurred while fetching file from: %1$s%2$s%3$s!%4$sReason: %5$s - %6$s.', 'sinco' ),
+					__( 'An error occurred while fetching file from: %1$s%2$s%3$s!%4$sReason: %5$s - %6$s.', 'DataCraft' ),
 					'<strong>',
 					$url,
 					'</strong>',

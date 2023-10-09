@@ -14,15 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $config = array();
 
-$config['default']['sinco_main_header'][] 	= array( 'sinco_preloader', 98 );
-$config['default']['sinco_main_header'][] 	= array( 'sinco_main_header_area', 99 );
+$config['default']['DataCraft_main_header'][] 	= array( 'DataCraft_preloader', 98 );
+$config['default']['DataCraft_main_header'][] 	= array( 'DataCraft_main_header_area', 99 );
 
-$config['default']['sinco_main_footer'][] 	= array( 'sinco_preloader', 98 );
-$config['default']['sinco_main_footer'][] 	= array( 'sinco_main_footer_area', 99 );
+$config['default']['DataCraft_main_footer'][] 	= array( 'DataCraft_preloader', 98 );
+$config['default']['DataCraft_main_footer'][] 	= array( 'DataCraft_main_footer_area', 99 );
 
-$config['default']['sinco_sidebar'][] 	    = array( 'sinco_sidebar', 99 );
+$config['default']['DataCraft_sidebar'][] 	    = array( 'DataCraft_sidebar', 99 );
 
-$config['default']['sinco_banner'][] 	    = array( 'sinco_banner', 99 );
+$config['default']['DataCraft_banner'][] 	    = array( 'DataCraft_banner', 99 );
 
 
 return $config;

@@ -1,6 +1,6 @@
 <?php
 
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
 
 /**

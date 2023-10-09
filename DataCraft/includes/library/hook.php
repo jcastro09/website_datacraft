@@ -11,10 +11,10 @@
 /**
  * Load the default config
  */
-//sinco_load_default_hooks
-function sinco_load_default_hooks() {
+//DataCraft_load_default_hooks
+function DataCraft_load_default_hooks() {
 
-	$config = sinco_WSH()->config( 'default' );
+	$config = DataCraft_WSH()->config( 'default' );
 
 	if ( is_array( $config ) ) {
 
@@ -31,9 +31,9 @@ function sinco_load_default_hooks() {
 		}
 	}
 }
-//sinco_preloader
-function sinco_preloader() {
-	$options     = sinco_WSH()->option();
+//DataCraft_preloader
+function DataCraft_preloader() {
+	$options     = DataCraft_WSH()->option();
 
 	if( ! $options->get('theme_preloader')) {
 		return;
@@ -48,15 +48,15 @@ function sinco_preloader() {
 	<?php
 }
 /**
- * [sinco_main_header_area description]
+ * [DataCraft_main_header_area description]
  *
  * @return [type] [description]
  */
 
-//sinco_main_header_area
-function sinco_main_header_area() {
+//DataCraft_main_header_area
+function DataCraft_main_header_area() {
 
-	$options     = sinco_WSH()->option();
+	$options     = DataCraft_WSH()->option();
     
     $header_type = '';
     $header_e = 0;
@@ -93,35 +93,35 @@ function sinco_main_header_area() {
 
 	//need to change
 	if ( $header == 'header_v1' ) {
-		sinco_template_load( 'templates/header/default-header.php' );
+		DataCraft_template_load( 'templates/header/default-header.php' );
 	} elseif ( $header == 'header_v2' ) {
-		sinco_template_load( 'templates/header/header_v2.php' );
+		DataCraft_template_load( 'templates/header/header_v2.php' );
 	} elseif ( $header == 'header_v3' ) {
-		sinco_template_load( 'templates/header/header_v3.php' );
+		DataCraft_template_load( 'templates/header/header_v3.php' );
 	} elseif ( $header == 'header_v4' ) {
-		sinco_template_load( 'templates/header/header_v4.php' );
+		DataCraft_template_load( 'templates/header/header_v4.php' );
 	} elseif ( $header == 'header_v5' ) {
-		sinco_template_load( 'templates/header/dark_header_v1.php' );
+		DataCraft_template_load( 'templates/header/dark_header_v1.php' );
 	} elseif ( $header == 'header_v6' ) {
-		sinco_template_load( 'templates/header/dark_header_v2.php' );
+		DataCraft_template_load( 'templates/header/dark_header_v2.php' );
 	} elseif ( $header == 'header_v7' ) {
-		sinco_template_load( 'templates/header/dark_header_v3.php' );
+		DataCraft_template_load( 'templates/header/dark_header_v3.php' );
 	} elseif ( $header == 'header_v8' ) {
-		sinco_template_load( 'templates/header/dark_header_v4.php' );
+		DataCraft_template_load( 'templates/header/dark_header_v4.php' );
 	} else {
-		sinco_template_load( 'templates/header/default-header.php' );
+		DataCraft_template_load( 'templates/header/default-header.php' );
 	}
 }
 
 /**
- * [sinco_main_footer_area description]
+ * [DataCraft_main_footer_area description]
  *
  * @return [type] [description]
  */
-//sinco_main_footer_area
-function sinco_main_footer_area() {
+//DataCraft_main_footer_area
+function DataCraft_main_footer_area() {
 
-	$options     = sinco_WSH()->option();
+	$options     = DataCraft_WSH()->option();
     
     $footer_type = '';
     $footer_e = 0;
@@ -159,39 +159,39 @@ function sinco_main_footer_area() {
 
 	//need to change
 	if ( $footer == 'footer_v1' ) {
-		sinco_template_load( 'templates/footer/default-footer.php' );
+		DataCraft_template_load( 'templates/footer/default-footer.php' );
 	} elseif ( $footer == 'footer_v2' ) {
-		sinco_template_load( 'templates/footer/footer_v2.php' );
+		DataCraft_template_load( 'templates/footer/footer_v2.php' );
 	} elseif ( $footer == 'footer_v3' ) {
-		sinco_template_load( 'templates/footer/footer_v3.php' );
+		DataCraft_template_load( 'templates/footer/footer_v3.php' );
 	} elseif ( $footer == 'footer_v4' ) {
-		sinco_template_load( 'templates/footer/footer_v4.php' );
+		DataCraft_template_load( 'templates/footer/footer_v4.php' );
 	} elseif ( $footer == 'footer_v5' ) {
-		sinco_template_load( 'templates/footer/footer_v5.php' );
+		DataCraft_template_load( 'templates/footer/footer_v5.php' );
 	} else {
-		sinco_template_load( 'templates/footer/default-footer.php' );
+		DataCraft_template_load( 'templates/footer/default-footer.php' );
 	}
 }
 
 /**
- * [sinco_sidebar description]
+ * [DataCraft_sidebar description]
  *
  * @return [type] [description]
  */
-//sinco_sidebar
-function sinco_sidebar( $data ) {
+//DataCraft_sidebar
+function DataCraft_sidebar( $data ) {
 
-	sinco_template_load( 'templates/sidebar.php', compact( 'data' ) );
+	DataCraft_template_load( 'templates/sidebar.php', compact( 'data' ) );
 }
 
 /**
- * [sinco_banner description]
+ * [DataCraft_banner description]
  *
  * @return [type] [description]
  */
-//sinco_banner
-function sinco_banner( $data ) {
+//DataCraft_banner
+function DataCraft_banner( $data ) {
 
-	sinco_template_load( 'templates/banner/banner.php', compact( 'data' ) );
+	DataCraft_template_load( 'templates/banner/banner.php', compact( 'data' ) );
 
 }

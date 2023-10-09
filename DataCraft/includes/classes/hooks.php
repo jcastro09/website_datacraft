@@ -1,6 +1,6 @@
 <?php
 
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
 
 /**
@@ -11,7 +11,7 @@ class Hooks {
 
 	function __construct() {
 
-		add_action( 'sinco_main_header', array( $this, 'header' ) );
+		add_action( 'DataCraft_main_header', array( $this, 'header' ) );
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Hooks {
 
 	function __construct() {
 
-		add_action( 'sinco_main_footer', array( $this, 'footer' ) );
+		add_action( 'DataCraft_main_footer', array( $this, 'footer' ) );
 	}
 
 	/**

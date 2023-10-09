@@ -162,11 +162,11 @@ class FirePHPHandler extends AbstractProcessingHandler
      */
     protected function headersAccepted()
     {
-        if (!empty(sinco_get_server('HTTP_USER_AGENT')) && preg_match('{\bFirePHP/\d+\.\d+\b}', sinco_get_server('HTTP_USER_AGENT'))) {
+        if (!empty(DataCraft_get_server('HTTP_USER_AGENT')) && preg_match('{\bFirePHP/\d+\.\d+\b}', DataCraft_get_server('HTTP_USER_AGENT'))) {
             return true;
         }
 
-        return sinco_get_server('HTTP_X_FIREPHP_VERSION');
+        return DataCraft_get_server('HTTP_X_FIREPHP_VERSION');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php 
 
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
 /**
  * Visual Composer array mapper and render the output.
@@ -126,7 +126,7 @@ class Visual_Composer {
 		// Map the params of existing elements.
 		$this->map_params();
 
-		$maps = apply_filters( 'sinco_vc_map', $this->maps );
+		$maps = apply_filters( 'DataCraft_vc_map', $this->maps );
 
 		foreach ( $maps as $value) {
 			
@@ -138,10 +138,10 @@ class Visual_Composer {
 
 				vc_map( $data );
 
-				if ( function_exists( 'wpsinco_shortcode' ) ) {
-					$tag = esc_attr( sinco_set( $data, 'base' ) );
+				if ( function_exists( 'wpDataCraft_shortcode' ) ) {
+					$tag = esc_attr( DataCraft_set( $data, 'base' ) );
 
-					wpsinco_shortcode( $tag, array( $this, 'output' ) );
+					wpDataCraft_shortcode( $tag, array( $this, 'output' ) );
 				}
 			}
 		}
@@ -153,7 +153,7 @@ class Visual_Composer {
 
 		ob_start();
 
-		sinco_template_load( 'shortcodes/' . $tag . '.php', compact( 'atts', 'content', 'tag' ) );
+		DataCraft_template_load( 'shortcodes/' . $tag . '.php', compact( 'atts', 'content', 'tag' ) );
 
 		return ob_get_clean();	
 
@@ -161,8 +161,8 @@ class Visual_Composer {
 
 	function get_file( $tag ) {
 
-		$file = sinco_template( 'includes/resource/vc_map/'.$tag . '.php' );
-		$file = apply_filters( "sinco_vc_map_file_{$tag}", $file );
+		$file = DataCraft_template( 'includes/resource/vc_map/'.$tag . '.php' );
+		$file = apply_filters( "DataCraft_vc_map_file_{$tag}", $file );
 
 		return $file;
 	}
@@ -180,7 +180,7 @@ class Visual_Composer {
 		if ( file_exists( $file ) ) {
 			$data = include $file;
 
-			return sinco_set( $data, 'params' );
+			return DataCraft_set( $data, 'params' );
 		}
 
 		return array();
@@ -225,7 +225,7 @@ class Visual_Composer {
 			$value = '';
 		}
 		$current_value = strlen( $value ) > 0 ? explode( ',', $value ) : array();
-		$values = isset( $settings['value'] ) && is_array( $settings['value'] ) ? $settings['value'] : array( esc_html__( 'Yes', 'sinco' ) => 'true' );
+		$values = isset( $settings['value'] ) && is_array( $settings['value'] ) ? $settings['value'] : array( esc_html__( 'Yes', 'DataCraft' ) => 'true' );
 		if ( ! empty( $values ) ) {
 			foreach ( $values as $label => $v ) {
 				$checked = count( $current_value ) > 0 && in_array( $v, $current_value ) ? ' checked' : '';

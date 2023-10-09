@@ -8,12 +8,12 @@
  */
 
 get_header();
-$data    = \SINCO\Includes\Classes\Common::instance()->data( 'single' )->get();
+$data    = \DataCraft\Includes\Classes\Common::instance()->data( 'single' )->get();
 $layout = $data->get( 'layout' );
 $sidebar = $data->get( 'sidebar' );
 if (is_active_sidebar( $sidebar )) {$layout = 'right';} else{$layout = 'full';}
 $class = ( !$layout || $layout == 'full' ) ? 'col-xs-12 col-sm-12 col-md-12' : 'col-lg-8';
-$options = sinco_WSH()->option();
+$options = DataCraft_WSH()->option();
 
 if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
 	
@@ -26,14 +26,14 @@ if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
 ?>
 
 <?php if ( class_exists( '\Elementor\Plugin' )):?>
-	<?php do_action( 'sinco_banner', $data );?>
+	<?php do_action( 'DataCraft_banner', $data );?>
 <?php else:?>
 <!--Start breadcrumb area paroller-->     
 <div class="theme-inner-banner">
     <div class="container">
         <h2 class="intro-title text-center"><?php if( $data->get( 'title' ) ) echo wp_kses( $data->get( 'title' ), true ); else( wp_title( '' ) ); ?></h2>
         <ul class="page-breadcrumb style-none d-flex justify-content-center">
-            <?php echo sinco_the_breadcrumb(); ?>
+            <?php echo DataCraft_the_breadcrumb(); ?>
         </ul>
     </div>
     <img src="<?php echo esc_url(get_template_directory_uri());?>/assets/images/shape/shape_38.svg" alt="" class="shapes shape-one">
@@ -50,7 +50,7 @@ if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
                 <div class="row">
 					<?php
                         if ( $data->get( 'layout' ) == 'left' ) {
-                            do_action( 'sinco_sidebar', $data );
+                            do_action( 'DataCraft_sidebar', $data );
                         }
                     ?>
                     <div class="<?php echo esc_attr( $class ); ?>">
@@ -63,7 +63,7 @@ if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
                                 <article class="blog-meta-three tran3s mt-45">
                                     <?php if(has_post_thumbnail()){ ?>
                                     <figure class="post-img m0"><div class="w-100 tran4s">
-                                            <?php the_post_thumbnail('sinco_1170x440'); ?>
+                                            <?php the_post_thumbnail('DataCraft_1170x440'); ?>
                                         </div>
                                      </figure>
                                     <?php } ?>    
@@ -73,14 +73,14 @@ if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
                                         <div class="post-meta">
                                             <div class="date"><?php echo esc_attr(get_the_date()); ?></div>
                                             <ul>
-                                                <li><?php esc_html_e('By:', 'sinco'); ?> <?php the_author(); ?>  /  <?php if(has_category()){?><?php the_category(' '); ?> /<?php } ?> <?php comments_number( wp_kses(__('0 Comments' , 'sinco'), true), wp_kses(__('1 Comment' , 'sinco'), true), wp_kses(__('% Comments' , 'sinco'), true)); ?></li>
+                                                <li><?php esc_html_e('By:', 'DataCraft'); ?> <?php the_author(); ?>  /  <?php if(has_category()){?><?php the_category(' '); ?> /<?php } ?> <?php comments_number( wp_kses(__('0 Comments' , 'DataCraft'), true), wp_kses(__('1 Comment' , 'DataCraft'), true), wp_kses(__('% Comments' , 'DataCraft'), true)); ?></li>
                                             </ul>
                                         </div>
                                         
                                         <div class="text">
                                             <?php the_content(); ?>
                                             <div class="clearfix"></div>
-                                            <?php wp_link_pages(array('before'=>'<div class="paginate-links">'.esc_html__('Pages: ', 'sinco'), 'after' => '</div>', 'link_before'=>'<span>', 'link_after'=>'</span>')); ?>
+                                            <?php wp_link_pages(array('before'=>'<div class="paginate-links">'.esc_html__('Pages: ', 'DataCraft'), 'after' => '</div>', 'link_before'=>'<span>', 'link_after'=>'</span>')); ?>
                                         </div>
                                         
                                         <?php if(function_exists('bunch_share_us_two') || has_tag()):?>
@@ -88,7 +88,7 @@ if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
                                             
                                             <?php if(has_tag()){ ?>
                                             <ul class="d-flex tags style-none pt-10">
-                                                <li><?php esc_html_e('Tags:', 'sinco'); ?></li>
+                                                <li><?php esc_html_e('Tags:', 'DataCraft'); ?></li>
                                                 <?php the_tags( '<li>', '</li>, <li>', '</li>' ); ?> 
                                             </ul>
                                             <?php } ?>
@@ -114,7 +114,7 @@ if ( class_exists( '\Elementor\Plugin' ) && $data->get( 'tpl-type' ) == 'e') {
                     </div>
                     <?php
                         if ( $data->get( 'layout' ) == 'right' ) {
-                            do_action( 'sinco_sidebar', $data );
+                            do_action( 'DataCraft_sidebar', $data );
                         }
                     ?>
                </div>	

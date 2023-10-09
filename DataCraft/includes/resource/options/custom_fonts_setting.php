@@ -3,7 +3,7 @@
 
 return array(
 
-	'title'  => esc_html__( 'Custom Font Settings', 'sinco' ),
+	'title'  => esc_html__( 'Custom Font Settings', 'DataCraft' ),
 
 	'id'     => 'custom_fonts_setting',
 
@@ -18,7 +18,7 @@ return array(
 
 			'type' => 'fonts',
 
-			'desc' => esc_html__( 'Please upload your desire font file in *.ttf,  *.otf, *.eot, *.woff format', 'sinco' ),
+			'desc' => esc_html__( 'Please upload your desire font file in *.ttf,  *.otf, *.eot, *.woff format', 'DataCraft' ),
 		),
 	),    
 );

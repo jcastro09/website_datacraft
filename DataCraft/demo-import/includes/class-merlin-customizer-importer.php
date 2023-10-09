@@ -27,7 +27,7 @@ class Merlin_Customizer_Importer {
 			return false;
 		}
 
-		Merlin_Logger::get_instance()->info( __( 'The customizer import has finished successfully', 'sinco' ) );
+		Merlin_Logger::get_instance()->info( __( 'The customizer import has finished successfully', 'DataCraft' ) );
 		return true;
 	}
 
@@ -54,20 +54,20 @@ class Merlin_Customizer_Importer {
 			return new \WP_Error(
 				'missing_cutomizer_import_file',
 				sprintf(
-					esc_html__( 'Error: The customizer import file is missing! File path: %s', 'sinco' ),
+					esc_html__( 'Error: The customizer import file is missing! File path: %s', 'DataCraft' ),
 					$import_file_path
 				)
 			);
 		}
 
 		// Get the upload data.
-		$raw = sinco_filesystem()->get_contents( $import_file_path );
+		$raw = DataCraft_filesystem()->get_contents( $import_file_path );
 
 		// Make sure we got the data.
 		if ( empty( $raw ) ) {
 			return new \WP_Error(
 				'customizer_import_data_missing_content',
-				esc_html__( 'Error: The customizer import file does not have any content in it. Please make sure to use the correct customizer import file.', 'sinco' )
+				esc_html__( 'Error: The customizer import file does not have any content in it. Please make sure to use the correct customizer import file.', 'DataCraft' )
 			);
 		}
 
@@ -77,13 +77,13 @@ class Merlin_Customizer_Importer {
 		if ( ! is_array( $data ) && ( ! isset( $data['template'] ) || ! isset( $data['mods'] ) ) ) {
 			return new \WP_Error(
 				'customizer_import_data_error',
-				esc_html__( 'Error: The customizer import file is not in a correct format. Please make sure to use the correct customizer import file.', 'sinco' )
+				esc_html__( 'Error: The customizer import file is not in a correct format. Please make sure to use the correct customizer import file.', 'DataCraft' )
 			);
 		}
 		if ( $data['template'] !== $template ) {
 			return new \WP_Error(
 				'customizer_import_wrong_theme',
-				esc_html__( 'Error: The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'sinco' )
+				esc_html__( 'Error: The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'DataCraft' )
 			);
 		}
 

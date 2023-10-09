@@ -1,9 +1,9 @@
 <?php
 
-namespace SINCO\Includes\Classes;
+namespace DataCraft\Includes\Classes;
 
-use SINCO\Includes\Classes\Header_Enqueue;
-use SINCO\Includes\Classes\Options;
+use DataCraft\Includes\Classes\Header_Enqueue;
+use DataCraft\Includes\Classes\Options;
 
 /**
  * Header and Enqueue class
@@ -17,7 +17,7 @@ class Base {
 	 *
 	 * @var string
 	 */
-	private $option_key = 'sinco';
+	private $option_key = 'DataCraft';
 
 	function __construct() {
 
@@ -34,8 +34,8 @@ class Base {
 	
 	public static function instance() {
 
-		if ( isset( $GLOBALS['sinco_base'] ) ) {
-			return $GLOBALS['sinco_base'];
+		if ( isset( $GLOBALS['DataCraft_base'] ) ) {
+			return $GLOBALS['DataCraft_base'];
 		}
 
 		if ( is_null( self::$instance ) ) {
@@ -55,9 +55,9 @@ class Base {
 	 */
 	function option( $key = '' ) {
 
-		$options = (array) get_theme_mod( 'sinco' . '_options-mods' );
+		$options = (array) get_theme_mod( 'DataCraft' . '_options-mods' );
 
-		$dn = sinco_dot( $options );
+		$dn = DataCraft_dot( $options );
 
 		if ( $key ) {
 			return $dn->get( $key );
@@ -101,7 +101,7 @@ class Base {
 			return;
 		}
 
-		$id = ( $id ) ? $id : sinco_set( $post, 'ID' );
+		$id = ( $id ) ? $id : DataCraft_set( $post, 'ID' );
 
 		$key = ( $key ) ? $key : '_sh_'.$post_type.'_settings';
 
