@@ -2,7 +2,7 @@
 /**
  * Blog Main File.
  *
- * @package SINCO
+ * @package DataCraft
  * @author  TemplatePath
  * @version 1.0
  */
