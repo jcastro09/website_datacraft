@@ -4,7 +4,7 @@
  * Sidebar Template
  *
  * @package    WordPress
- * @subpackage SINCO
+ * @subpackage DataCraft
  * @author     TemplatePath
  * @version    1.0
  */

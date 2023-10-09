@@ -2,7 +2,7 @@
 /**
  * Footer Template  File
  *
- * @package SINCO
+ * @package DataCraft
  * @author  Webiane
  * @version 1.0
  */

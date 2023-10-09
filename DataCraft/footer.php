@@ -2,7 +2,7 @@
 /**
  * Footer Main File.
  *
- * @package SINCO
+ * @package DataCraft
  * @author  Template Path
  * @version 1.0
  */

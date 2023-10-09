@@ -3,7 +3,7 @@
  * 404 page file
  *
  * @package    WordPress
- * @subpackage Sinco
+ * @subpackage DataCraft
  * @author     Template Path <admin@template_path.com>
  * @version    1.0
  */

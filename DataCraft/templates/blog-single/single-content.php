@@ -3,7 +3,7 @@
  * Single Post Content Template
  *
  * @package    WordPress
- * @subpackage SINCO
+ * @subpackage DataCraft
  * @author     Template Path
  * @version    1.0
  */

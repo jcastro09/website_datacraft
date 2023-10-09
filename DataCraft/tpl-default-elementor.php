@@ -1,7 +1,7 @@
 <?php 
 /* Template Name: Default Elementor Page */ 
 /**
- * @package SINCO
+ * @package DataCraft
  * @author  TemplatePath
  * @version 1.0
  */

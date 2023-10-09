@@ -3,7 +3,7 @@
 /**
  * Hookup all the tags here.
  *
- * @package SINCO
+ * @package DataCraft
  * @author  Shahbaz Ahmed <shahbazahmed9@hotmail.com>
  * @version 1.0
  */

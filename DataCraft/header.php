@@ -3,7 +3,7 @@
  * The header for our theme
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
- * @package SINCO
+ * @package DataCraft
  * @since   1.0
  * @version 1.0
  */

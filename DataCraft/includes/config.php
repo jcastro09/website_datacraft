@@ -2,7 +2,7 @@
 /**
  * Theme config file.
  *
- * @package SINCO
+ * @package DataCraft
  * @author  TemplatePath
  * @version 1.0
  * changed

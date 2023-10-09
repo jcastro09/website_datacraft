@@ -2,7 +2,7 @@
 /**
  * Search Form template
  *
- * @package SINCO
+ * @package DataCraft
  * @author Template Path
  * @version 1.0
  */

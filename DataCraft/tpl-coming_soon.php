@@ -1,7 +1,7 @@
 <?php
 /* Template Name: Coming Soon Page */
 /**
- * @package SINCO
+ * @package DataCraft
  * @author  TemplatePath
  * @version 1.0
  */
